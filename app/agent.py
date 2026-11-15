@@ -317,7 +317,7 @@ if __name__ == "__main__":
     conversation_id = "demo-session"
 
     question = (
-    "Can you summarise the top three products "
+    "Can you summarize the top three products "
     "you just identified?"
     )
 
