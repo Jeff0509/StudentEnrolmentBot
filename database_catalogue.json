@@ -1,0 +1,4688 @@
+{
+    "database": "WideWorldImporters",
+    "tables": {
+        "Application.Cities": [
+            {
+                "column": "CityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "CityName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StateProvinceID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Location",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LatestRecordedPopulation",
+                "data_type": "bigint",
+                "max_length": 8,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.Cities_Archive": [
+            {
+                "column": "CityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CityName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StateProvinceID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Location",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LatestRecordedPopulation",
+                "data_type": "bigint",
+                "max_length": 8,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.Countries": [
+            {
+                "column": "CountryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "CountryName",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "FormalName",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsoAlpha3Code",
+                "data_type": "nvarchar",
+                "max_length": 6,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsoNumericCode",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "CountryType",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LatestRecordedPopulation",
+                "data_type": "bigint",
+                "max_length": 8,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Continent",
+                "data_type": "nvarchar",
+                "max_length": 60,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Region",
+                "data_type": "nvarchar",
+                "max_length": 60,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Subregion",
+                "data_type": "nvarchar",
+                "max_length": 60,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Border",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.Countries_Archive": [
+            {
+                "column": "CountryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CountryName",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "FormalName",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsoAlpha3Code",
+                "data_type": "nvarchar",
+                "max_length": 6,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsoNumericCode",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "CountryType",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LatestRecordedPopulation",
+                "data_type": "bigint",
+                "max_length": 8,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Continent",
+                "data_type": "nvarchar",
+                "max_length": 60,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Region",
+                "data_type": "nvarchar",
+                "max_length": 60,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Subregion",
+                "data_type": "nvarchar",
+                "max_length": 60,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Border",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.DeliveryMethods": [
+            {
+                "column": "DeliveryMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "DeliveryMethodName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.DeliveryMethods_Archive": [
+            {
+                "column": "DeliveryMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryMethodName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.PaymentMethods": [
+            {
+                "column": "PaymentMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "PaymentMethodName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.PaymentMethods_Archive": [
+            {
+                "column": "PaymentMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PaymentMethodName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.People": [
+            {
+                "column": "PersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "FullName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PreferredName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SearchName",
+                "data_type": "nvarchar",
+                "max_length": 202,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsPermittedToLogon",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LogonName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsExternalLogonProvider",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "HashedPassword",
+                "data_type": "varbinary",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsSystemUser",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsEmployee",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsSalesperson",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "UserPreferences",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PhoneNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "FaxNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "EmailAddress",
+                "data_type": "nvarchar",
+                "max_length": 512,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Photo",
+                "data_type": "varbinary",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "CustomFields",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "OtherLanguages",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.People_Archive": [
+            {
+                "column": "PersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "FullName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PreferredName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SearchName",
+                "data_type": "nvarchar",
+                "max_length": 202,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsPermittedToLogon",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LogonName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsExternalLogonProvider",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "HashedPassword",
+                "data_type": "varbinary",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsSystemUser",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsEmployee",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsSalesperson",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "UserPreferences",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PhoneNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "FaxNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "EmailAddress",
+                "data_type": "nvarchar",
+                "max_length": 512,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Photo",
+                "data_type": "varbinary",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "CustomFields",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "OtherLanguages",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.StateProvinces": [
+            {
+                "column": "StateProvinceID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "StateProvinceCode",
+                "data_type": "nvarchar",
+                "max_length": 10,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StateProvinceName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CountryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SalesTerritory",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Border",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LatestRecordedPopulation",
+                "data_type": "bigint",
+                "max_length": 8,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.StateProvinces_Archive": [
+            {
+                "column": "StateProvinceID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StateProvinceCode",
+                "data_type": "nvarchar",
+                "max_length": 10,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StateProvinceName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CountryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SalesTerritory",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Border",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LatestRecordedPopulation",
+                "data_type": "bigint",
+                "max_length": 8,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.SystemParameters": [
+            {
+                "column": "SystemParameterID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "DeliveryAddressLine1",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryAddressLine2",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryCityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryPostalCode",
+                "data_type": "nvarchar",
+                "max_length": 20,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryLocation",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalAddressLine1",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalAddressLine2",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PostalCityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalPostalCode",
+                "data_type": "nvarchar",
+                "max_length": 20,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ApplicationSettings",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.TransactionTypes": [
+            {
+                "column": "TransactionTypeID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "TransactionTypeName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Application.TransactionTypes_Archive": [
+            {
+                "column": "TransactionTypeID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TransactionTypeName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Purchasing.PurchaseOrderLines": [
+            {
+                "column": "PurchaseOrderLineID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "PurchaseOrderID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StockItemID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "OrderedOuters",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Description",
+                "data_type": "nvarchar",
+                "max_length": 200,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ReceivedOuters",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PackageTypeID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ExpectedUnitPricePerOuter",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastReceiptDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsOrderLineFinalized",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Purchasing.PurchaseOrders": [
+            {
+                "column": "PurchaseOrderID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "SupplierID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "OrderDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ExpectedDeliveryDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierReference",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsOrderFinalized",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Comments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "InternalComments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Purchasing.SupplierCategories": [
+            {
+                "column": "SupplierCategoryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "SupplierCategoryName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Purchasing.SupplierCategories_Archive": [
+            {
+                "column": "SupplierCategoryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierCategoryName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Purchasing.Suppliers": [
+            {
+                "column": "SupplierID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "SupplierName",
+                "data_type": "nvarchar",
+                "max_length": 200,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierCategoryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PrimaryContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "AlternateContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryCityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalCityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierReference",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BankAccountName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BankAccountBranch",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BankAccountCode",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BankAccountNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BankInternationalCode",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PaymentDays",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "InternalComments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PhoneNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "FaxNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "WebsiteURL",
+                "data_type": "nvarchar",
+                "max_length": 512,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryAddressLine1",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryAddressLine2",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryPostalCode",
+                "data_type": "nvarchar",
+                "max_length": 20,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryLocation",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PostalAddressLine1",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalAddressLine2",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PostalPostalCode",
+                "data_type": "nvarchar",
+                "max_length": 20,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Purchasing.Suppliers_Archive": [
+            {
+                "column": "SupplierID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierName",
+                "data_type": "nvarchar",
+                "max_length": 200,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierCategoryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PrimaryContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "AlternateContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryCityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalCityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierReference",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BankAccountName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BankAccountBranch",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BankAccountCode",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BankAccountNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BankInternationalCode",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PaymentDays",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "InternalComments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PhoneNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "FaxNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "WebsiteURL",
+                "data_type": "nvarchar",
+                "max_length": 512,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryAddressLine1",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryAddressLine2",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryPostalCode",
+                "data_type": "nvarchar",
+                "max_length": 20,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryLocation",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PostalAddressLine1",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalAddressLine2",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PostalPostalCode",
+                "data_type": "nvarchar",
+                "max_length": 20,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Purchasing.SupplierTransactions": [
+            {
+                "column": "SupplierTransactionID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "SupplierID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TransactionTypeID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PurchaseOrderID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PaymentMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierInvoiceNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "TransactionDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "AmountExcludingTax",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TaxAmount",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TransactionAmount",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "OutstandingBalance",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "FinalizationDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsFinalized",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.BuyingGroups": [
+            {
+                "column": "BuyingGroupID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "BuyingGroupName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.BuyingGroups_Archive": [
+            {
+                "column": "BuyingGroupID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "BuyingGroupName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.CustomerCategories": [
+            {
+                "column": "CustomerCategoryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "CustomerCategoryName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.CustomerCategories_Archive": [
+            {
+                "column": "CustomerCategoryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CustomerCategoryName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.Customers": [
+            {
+                "column": "CustomerID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "CustomerName",
+                "data_type": "nvarchar",
+                "max_length": 200,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "BillToCustomerID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CustomerCategoryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "BuyingGroupID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PrimaryContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "AlternateContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryCityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalCityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CreditLimit",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "AccountOpenedDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StandardDiscountPercentage",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsStatementSent",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsOnCreditHold",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PaymentDays",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PhoneNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "FaxNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryRun",
+                "data_type": "nvarchar",
+                "max_length": 10,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "RunPosition",
+                "data_type": "nvarchar",
+                "max_length": 10,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "WebsiteURL",
+                "data_type": "nvarchar",
+                "max_length": 512,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryAddressLine1",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryAddressLine2",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryPostalCode",
+                "data_type": "nvarchar",
+                "max_length": 20,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryLocation",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PostalAddressLine1",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalAddressLine2",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PostalPostalCode",
+                "data_type": "nvarchar",
+                "max_length": 20,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.Customers_Archive": [
+            {
+                "column": "CustomerID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CustomerName",
+                "data_type": "nvarchar",
+                "max_length": 200,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "BillToCustomerID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CustomerCategoryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "BuyingGroupID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PrimaryContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "AlternateContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryCityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalCityID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CreditLimit",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "AccountOpenedDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StandardDiscountPercentage",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsStatementSent",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsOnCreditHold",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PaymentDays",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PhoneNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "FaxNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryRun",
+                "data_type": "nvarchar",
+                "max_length": 10,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "RunPosition",
+                "data_type": "nvarchar",
+                "max_length": 10,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "WebsiteURL",
+                "data_type": "nvarchar",
+                "max_length": 512,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryAddressLine1",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryAddressLine2",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryPostalCode",
+                "data_type": "nvarchar",
+                "max_length": 20,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryLocation",
+                "data_type": "geography",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PostalAddressLine1",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PostalAddressLine2",
+                "data_type": "nvarchar",
+                "max_length": 120,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PostalPostalCode",
+                "data_type": "nvarchar",
+                "max_length": 20,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.CustomerTransactions": [
+            {
+                "column": "CustomerTransactionID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "CustomerID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TransactionTypeID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "InvoiceID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PaymentMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "TransactionDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "AmountExcludingTax",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TaxAmount",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TransactionAmount",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "OutstandingBalance",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "FinalizationDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsFinalized",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.InvoiceLines": [
+            {
+                "column": "InvoiceLineID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "InvoiceID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StockItemID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Description",
+                "data_type": "nvarchar",
+                "max_length": 200,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PackageTypeID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Quantity",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "UnitPrice",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "TaxRate",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TaxAmount",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LineProfit",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ExtendedPrice",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.Invoices": [
+            {
+                "column": "InvoiceID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "CustomerID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "BillToCustomerID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "OrderID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryMethodID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "AccountsPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SalespersonPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PackedByPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "InvoiceDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CustomerPurchaseOrderNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsCreditNote",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CreditNoteReason",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Comments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryInstructions",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "InternalComments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "TotalDryItems",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TotalChillerItems",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryRun",
+                "data_type": "nvarchar",
+                "max_length": 10,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "RunPosition",
+                "data_type": "nvarchar",
+                "max_length": 10,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "ReturnedDeliveryData",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "ConfirmedDeliveryTime",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "ConfirmedReceivedBy",
+                "data_type": "nvarchar",
+                "max_length": 8000,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.OrderLines": [
+            {
+                "column": "OrderLineID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "OrderID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StockItemID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Description",
+                "data_type": "nvarchar",
+                "max_length": 200,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PackageTypeID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Quantity",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "UnitPrice",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "TaxRate",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PickedQuantity",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PickingCompletedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.Orders": [
+            {
+                "column": "OrderID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "CustomerID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SalespersonPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PickedByPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "ContactPersonID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "BackorderOrderID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "OrderDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ExpectedDeliveryDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CustomerPurchaseOrderNumber",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsUndersupplyBackordered",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Comments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DeliveryInstructions",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "InternalComments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PickingCompletedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Sales.SpecialDeals": [
+            {
+                "column": "SpecialDealID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "StockItemID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "CustomerID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "BuyingGroupID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "CustomerCategoryID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "StockGroupID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DealDescription",
+                "data_type": "nvarchar",
+                "max_length": 60,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StartDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "EndDate",
+                "data_type": "date",
+                "max_length": 3,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "DiscountAmount",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "DiscountPercentage",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "UnitPrice",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.ColdRoomTemperatures": [
+            {
+                "column": "ColdRoomTemperatureID",
+                "data_type": "bigint",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "ColdRoomSensorNumber",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "RecordedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Temperature",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.ColdRoomTemperatures_Archive": [
+            {
+                "column": "ColdRoomTemperatureID",
+                "data_type": "bigint",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ColdRoomSensorNumber",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "RecordedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Temperature",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.Colors": [
+            {
+                "column": "ColorID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "ColorName",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.Colors_Archive": [
+            {
+                "column": "ColorID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ColorName",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.PackageTypes": [
+            {
+                "column": "PackageTypeID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "PackageTypeName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.PackageTypes_Archive": [
+            {
+                "column": "PackageTypeID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "PackageTypeName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.StockGroups": [
+            {
+                "column": "StockGroupID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "StockGroupName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.StockGroups_Archive": [
+            {
+                "column": "StockGroupID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StockGroupName",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.StockItemHoldings": [
+            {
+                "column": "StockItemID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "QuantityOnHand",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "BinLocation",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastStocktakeQuantity",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastCostPrice",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ReorderLevel",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TargetStockLevel",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.StockItems": [
+            {
+                "column": "StockItemID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "StockItemName",
+                "data_type": "nvarchar",
+                "max_length": 200,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ColorID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "UnitPackageID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "OuterPackageID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Brand",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Size",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LeadTimeDays",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "QuantityPerOuter",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsChillerStock",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Barcode",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "TaxRate",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "UnitPrice",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "RecommendedRetailPrice",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "TypicalWeightPerUnit",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "MarketingComments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "InternalComments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Photo",
+                "data_type": "varbinary",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "CustomFields",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Tags",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "SearchDetails",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.StockItems_Archive": [
+            {
+                "column": "StockItemID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StockItemName",
+                "data_type": "nvarchar",
+                "max_length": 200,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ColorID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "UnitPackageID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "OuterPackageID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Brand",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Size",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "LeadTimeDays",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "QuantityPerOuter",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "IsChillerStock",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Barcode",
+                "data_type": "nvarchar",
+                "max_length": 100,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "TaxRate",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "UnitPrice",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "RecommendedRetailPrice",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "TypicalWeightPerUnit",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "MarketingComments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "InternalComments",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Photo",
+                "data_type": "varbinary",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "CustomFields",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "Tags",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "SearchDetails",
+                "data_type": "nvarchar",
+                "max_length": -1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidFrom",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ValidTo",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.StockItemStockGroups": [
+            {
+                "column": "StockItemStockGroupID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "StockItemID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "StockGroupID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.StockItemTransactions": [
+            {
+                "column": "StockItemTransactionID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "StockItemID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "TransactionTypeID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CustomerID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "InvoiceID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "SupplierID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "PurchaseOrderID",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "TransactionOccurredWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Quantity",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedBy",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "LastEditedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            }
+        ],
+        "Warehouse.VehicleTemperatures": [
+            {
+                "column": "VehicleTemperatureID",
+                "data_type": "bigint",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": true
+            },
+            {
+                "column": "VehicleRegistration",
+                "data_type": "nvarchar",
+                "max_length": 40,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "ChillerSensorNumber",
+                "data_type": "int",
+                "max_length": 4,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "RecordedWhen",
+                "data_type": "datetime2",
+                "max_length": 8,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "Temperature",
+                "data_type": "decimal",
+                "max_length": 9,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "FullSensorData",
+                "data_type": "nvarchar",
+                "max_length": 2000,
+                "nullable": true,
+                "primary_key": false
+            },
+            {
+                "column": "IsCompressed",
+                "data_type": "bit",
+                "max_length": 1,
+                "nullable": false,
+                "primary_key": false
+            },
+            {
+                "column": "CompressedSensorData",
+                "data_type": "varbinary",
+                "max_length": -1,
+                "nullable": true,
+                "primary_key": false
+            }
+        ]
+    },
+    "relationships": [
+        {
+            "foreign_key": "FK_Application_Cities_Application_People",
+            "parent_table": "Application.Cities",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Application_Cities_StateProvinceID_Application_StateProvinces",
+            "parent_table": "Application.Cities",
+            "parent_column": "StateProvinceID",
+            "referenced_table": "Application.StateProvinces",
+            "referenced_column": "StateProvinceID"
+        },
+        {
+            "foreign_key": "FK_Application_Countries_Application_People",
+            "parent_table": "Application.Countries",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Application_DeliveryMethods_Application_People",
+            "parent_table": "Application.DeliveryMethods",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Application_PaymentMethods_Application_People",
+            "parent_table": "Application.PaymentMethods",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Application_People_Application_People",
+            "parent_table": "Application.People",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Application_StateProvinces_Application_People",
+            "parent_table": "Application.StateProvinces",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Application_StateProvinces_CountryID_Application_Countries",
+            "parent_table": "Application.StateProvinces",
+            "parent_column": "CountryID",
+            "referenced_table": "Application.Countries",
+            "referenced_column": "CountryID"
+        },
+        {
+            "foreign_key": "FK_Application_SystemParameters_Application_People",
+            "parent_table": "Application.SystemParameters",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Application_SystemParameters_DeliveryCityID_Application_Cities",
+            "parent_table": "Application.SystemParameters",
+            "parent_column": "DeliveryCityID",
+            "referenced_table": "Application.Cities",
+            "referenced_column": "CityID"
+        },
+        {
+            "foreign_key": "FK_Application_SystemParameters_PostalCityID_Application_Cities",
+            "parent_table": "Application.SystemParameters",
+            "parent_column": "PostalCityID",
+            "referenced_table": "Application.Cities",
+            "referenced_column": "CityID"
+        },
+        {
+            "foreign_key": "FK_Application_TransactionTypes_Application_People",
+            "parent_table": "Application.TransactionTypes",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_PurchaseOrderLines_Application_People",
+            "parent_table": "Purchasing.PurchaseOrderLines",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_PurchaseOrderLines_PackageTypeID_Warehouse_PackageTypes",
+            "parent_table": "Purchasing.PurchaseOrderLines",
+            "parent_column": "PackageTypeID",
+            "referenced_table": "Warehouse.PackageTypes",
+            "referenced_column": "PackageTypeID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_PurchaseOrderLines_PurchaseOrderID_Purchasing_PurchaseOrders",
+            "parent_table": "Purchasing.PurchaseOrderLines",
+            "parent_column": "PurchaseOrderID",
+            "referenced_table": "Purchasing.PurchaseOrders",
+            "referenced_column": "PurchaseOrderID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_PurchaseOrderLines_StockItemID_Warehouse_StockItems",
+            "parent_table": "Purchasing.PurchaseOrderLines",
+            "parent_column": "StockItemID",
+            "referenced_table": "Warehouse.StockItems",
+            "referenced_column": "StockItemID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_PurchaseOrders_Application_People",
+            "parent_table": "Purchasing.PurchaseOrders",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_PurchaseOrders_ContactPersonID_Application_People",
+            "parent_table": "Purchasing.PurchaseOrders",
+            "parent_column": "ContactPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_PurchaseOrders_DeliveryMethodID_Application_DeliveryMethods",
+            "parent_table": "Purchasing.PurchaseOrders",
+            "parent_column": "DeliveryMethodID",
+            "referenced_table": "Application.DeliveryMethods",
+            "referenced_column": "DeliveryMethodID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_PurchaseOrders_SupplierID_Purchasing_Suppliers",
+            "parent_table": "Purchasing.PurchaseOrders",
+            "parent_column": "SupplierID",
+            "referenced_table": "Purchasing.Suppliers",
+            "referenced_column": "SupplierID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_SupplierCategories_Application_People",
+            "parent_table": "Purchasing.SupplierCategories",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_Suppliers_AlternateContactPersonID_Application_People",
+            "parent_table": "Purchasing.Suppliers",
+            "parent_column": "AlternateContactPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_Suppliers_Application_People",
+            "parent_table": "Purchasing.Suppliers",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_Suppliers_DeliveryCityID_Application_Cities",
+            "parent_table": "Purchasing.Suppliers",
+            "parent_column": "DeliveryCityID",
+            "referenced_table": "Application.Cities",
+            "referenced_column": "CityID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_Suppliers_DeliveryMethodID_Application_DeliveryMethods",
+            "parent_table": "Purchasing.Suppliers",
+            "parent_column": "DeliveryMethodID",
+            "referenced_table": "Application.DeliveryMethods",
+            "referenced_column": "DeliveryMethodID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_Suppliers_PostalCityID_Application_Cities",
+            "parent_table": "Purchasing.Suppliers",
+            "parent_column": "PostalCityID",
+            "referenced_table": "Application.Cities",
+            "referenced_column": "CityID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_Suppliers_PrimaryContactPersonID_Application_People",
+            "parent_table": "Purchasing.Suppliers",
+            "parent_column": "PrimaryContactPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_Suppliers_SupplierCategoryID_Purchasing_SupplierCategories",
+            "parent_table": "Purchasing.Suppliers",
+            "parent_column": "SupplierCategoryID",
+            "referenced_table": "Purchasing.SupplierCategories",
+            "referenced_column": "SupplierCategoryID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_SupplierTransactions_Application_People",
+            "parent_table": "Purchasing.SupplierTransactions",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_SupplierTransactions_PaymentMethodID_Application_PaymentMethods",
+            "parent_table": "Purchasing.SupplierTransactions",
+            "parent_column": "PaymentMethodID",
+            "referenced_table": "Application.PaymentMethods",
+            "referenced_column": "PaymentMethodID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_SupplierTransactions_PurchaseOrderID_Purchasing_PurchaseOrders",
+            "parent_table": "Purchasing.SupplierTransactions",
+            "parent_column": "PurchaseOrderID",
+            "referenced_table": "Purchasing.PurchaseOrders",
+            "referenced_column": "PurchaseOrderID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_SupplierTransactions_SupplierID_Purchasing_Suppliers",
+            "parent_table": "Purchasing.SupplierTransactions",
+            "parent_column": "SupplierID",
+            "referenced_table": "Purchasing.Suppliers",
+            "referenced_column": "SupplierID"
+        },
+        {
+            "foreign_key": "FK_Purchasing_SupplierTransactions_TransactionTypeID_Application_TransactionTypes",
+            "parent_table": "Purchasing.SupplierTransactions",
+            "parent_column": "TransactionTypeID",
+            "referenced_table": "Application.TransactionTypes",
+            "referenced_column": "TransactionTypeID"
+        },
+        {
+            "foreign_key": "FK_Sales_BuyingGroups_Application_People",
+            "parent_table": "Sales.BuyingGroups",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_CustomerCategories_Application_People",
+            "parent_table": "Sales.CustomerCategories",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_Customers_AlternateContactPersonID_Application_People",
+            "parent_table": "Sales.Customers",
+            "parent_column": "AlternateContactPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_Customers_Application_People",
+            "parent_table": "Sales.Customers",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_Customers_BillToCustomerID_Sales_Customers",
+            "parent_table": "Sales.Customers",
+            "parent_column": "BillToCustomerID",
+            "referenced_table": "Sales.Customers",
+            "referenced_column": "CustomerID"
+        },
+        {
+            "foreign_key": "FK_Sales_Customers_BuyingGroupID_Sales_BuyingGroups",
+            "parent_table": "Sales.Customers",
+            "parent_column": "BuyingGroupID",
+            "referenced_table": "Sales.BuyingGroups",
+            "referenced_column": "BuyingGroupID"
+        },
+        {
+            "foreign_key": "FK_Sales_Customers_CustomerCategoryID_Sales_CustomerCategories",
+            "parent_table": "Sales.Customers",
+            "parent_column": "CustomerCategoryID",
+            "referenced_table": "Sales.CustomerCategories",
+            "referenced_column": "CustomerCategoryID"
+        },
+        {
+            "foreign_key": "FK_Sales_Customers_DeliveryCityID_Application_Cities",
+            "parent_table": "Sales.Customers",
+            "parent_column": "DeliveryCityID",
+            "referenced_table": "Application.Cities",
+            "referenced_column": "CityID"
+        },
+        {
+            "foreign_key": "FK_Sales_Customers_DeliveryMethodID_Application_DeliveryMethods",
+            "parent_table": "Sales.Customers",
+            "parent_column": "DeliveryMethodID",
+            "referenced_table": "Application.DeliveryMethods",
+            "referenced_column": "DeliveryMethodID"
+        },
+        {
+            "foreign_key": "FK_Sales_Customers_PostalCityID_Application_Cities",
+            "parent_table": "Sales.Customers",
+            "parent_column": "PostalCityID",
+            "referenced_table": "Application.Cities",
+            "referenced_column": "CityID"
+        },
+        {
+            "foreign_key": "FK_Sales_Customers_PrimaryContactPersonID_Application_People",
+            "parent_table": "Sales.Customers",
+            "parent_column": "PrimaryContactPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_CustomerTransactions_Application_People",
+            "parent_table": "Sales.CustomerTransactions",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_CustomerTransactions_CustomerID_Sales_Customers",
+            "parent_table": "Sales.CustomerTransactions",
+            "parent_column": "CustomerID",
+            "referenced_table": "Sales.Customers",
+            "referenced_column": "CustomerID"
+        },
+        {
+            "foreign_key": "FK_Sales_CustomerTransactions_InvoiceID_Sales_Invoices",
+            "parent_table": "Sales.CustomerTransactions",
+            "parent_column": "InvoiceID",
+            "referenced_table": "Sales.Invoices",
+            "referenced_column": "InvoiceID"
+        },
+        {
+            "foreign_key": "FK_Sales_CustomerTransactions_PaymentMethodID_Application_PaymentMethods",
+            "parent_table": "Sales.CustomerTransactions",
+            "parent_column": "PaymentMethodID",
+            "referenced_table": "Application.PaymentMethods",
+            "referenced_column": "PaymentMethodID"
+        },
+        {
+            "foreign_key": "FK_Sales_CustomerTransactions_TransactionTypeID_Application_TransactionTypes",
+            "parent_table": "Sales.CustomerTransactions",
+            "parent_column": "TransactionTypeID",
+            "referenced_table": "Application.TransactionTypes",
+            "referenced_column": "TransactionTypeID"
+        },
+        {
+            "foreign_key": "FK_Sales_InvoiceLines_Application_People",
+            "parent_table": "Sales.InvoiceLines",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_InvoiceLines_InvoiceID_Sales_Invoices",
+            "parent_table": "Sales.InvoiceLines",
+            "parent_column": "InvoiceID",
+            "referenced_table": "Sales.Invoices",
+            "referenced_column": "InvoiceID"
+        },
+        {
+            "foreign_key": "FK_Sales_InvoiceLines_PackageTypeID_Warehouse_PackageTypes",
+            "parent_table": "Sales.InvoiceLines",
+            "parent_column": "PackageTypeID",
+            "referenced_table": "Warehouse.PackageTypes",
+            "referenced_column": "PackageTypeID"
+        },
+        {
+            "foreign_key": "FK_Sales_InvoiceLines_StockItemID_Warehouse_StockItems",
+            "parent_table": "Sales.InvoiceLines",
+            "parent_column": "StockItemID",
+            "referenced_table": "Warehouse.StockItems",
+            "referenced_column": "StockItemID"
+        },
+        {
+            "foreign_key": "FK_Sales_Invoices_AccountsPersonID_Application_People",
+            "parent_table": "Sales.Invoices",
+            "parent_column": "AccountsPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_Invoices_Application_People",
+            "parent_table": "Sales.Invoices",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_Invoices_BillToCustomerID_Sales_Customers",
+            "parent_table": "Sales.Invoices",
+            "parent_column": "BillToCustomerID",
+            "referenced_table": "Sales.Customers",
+            "referenced_column": "CustomerID"
+        },
+        {
+            "foreign_key": "FK_Sales_Invoices_ContactPersonID_Application_People",
+            "parent_table": "Sales.Invoices",
+            "parent_column": "ContactPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_Invoices_CustomerID_Sales_Customers",
+            "parent_table": "Sales.Invoices",
+            "parent_column": "CustomerID",
+            "referenced_table": "Sales.Customers",
+            "referenced_column": "CustomerID"
+        },
+        {
+            "foreign_key": "FK_Sales_Invoices_DeliveryMethodID_Application_DeliveryMethods",
+            "parent_table": "Sales.Invoices",
+            "parent_column": "DeliveryMethodID",
+            "referenced_table": "Application.DeliveryMethods",
+            "referenced_column": "DeliveryMethodID"
+        },
+        {
+            "foreign_key": "FK_Sales_Invoices_OrderID_Sales_Orders",
+            "parent_table": "Sales.Invoices",
+            "parent_column": "OrderID",
+            "referenced_table": "Sales.Orders",
+            "referenced_column": "OrderID"
+        },
+        {
+            "foreign_key": "FK_Sales_Invoices_PackedByPersonID_Application_People",
+            "parent_table": "Sales.Invoices",
+            "parent_column": "PackedByPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_Invoices_SalespersonPersonID_Application_People",
+            "parent_table": "Sales.Invoices",
+            "parent_column": "SalespersonPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_OrderLines_Application_People",
+            "parent_table": "Sales.OrderLines",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_OrderLines_OrderID_Sales_Orders",
+            "parent_table": "Sales.OrderLines",
+            "parent_column": "OrderID",
+            "referenced_table": "Sales.Orders",
+            "referenced_column": "OrderID"
+        },
+        {
+            "foreign_key": "FK_Sales_OrderLines_PackageTypeID_Warehouse_PackageTypes",
+            "parent_table": "Sales.OrderLines",
+            "parent_column": "PackageTypeID",
+            "referenced_table": "Warehouse.PackageTypes",
+            "referenced_column": "PackageTypeID"
+        },
+        {
+            "foreign_key": "FK_Sales_OrderLines_StockItemID_Warehouse_StockItems",
+            "parent_table": "Sales.OrderLines",
+            "parent_column": "StockItemID",
+            "referenced_table": "Warehouse.StockItems",
+            "referenced_column": "StockItemID"
+        },
+        {
+            "foreign_key": "FK_Sales_Orders_Application_People",
+            "parent_table": "Sales.Orders",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_Orders_BackorderOrderID_Sales_Orders",
+            "parent_table": "Sales.Orders",
+            "parent_column": "BackorderOrderID",
+            "referenced_table": "Sales.Orders",
+            "referenced_column": "OrderID"
+        },
+        {
+            "foreign_key": "FK_Sales_Orders_ContactPersonID_Application_People",
+            "parent_table": "Sales.Orders",
+            "parent_column": "ContactPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_Orders_CustomerID_Sales_Customers",
+            "parent_table": "Sales.Orders",
+            "parent_column": "CustomerID",
+            "referenced_table": "Sales.Customers",
+            "referenced_column": "CustomerID"
+        },
+        {
+            "foreign_key": "FK_Sales_Orders_PickedByPersonID_Application_People",
+            "parent_table": "Sales.Orders",
+            "parent_column": "PickedByPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_Orders_SalespersonPersonID_Application_People",
+            "parent_table": "Sales.Orders",
+            "parent_column": "SalespersonPersonID",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_SpecialDeals_Application_People",
+            "parent_table": "Sales.SpecialDeals",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Sales_SpecialDeals_BuyingGroupID_Sales_BuyingGroups",
+            "parent_table": "Sales.SpecialDeals",
+            "parent_column": "BuyingGroupID",
+            "referenced_table": "Sales.BuyingGroups",
+            "referenced_column": "BuyingGroupID"
+        },
+        {
+            "foreign_key": "FK_Sales_SpecialDeals_CustomerCategoryID_Sales_CustomerCategories",
+            "parent_table": "Sales.SpecialDeals",
+            "parent_column": "CustomerCategoryID",
+            "referenced_table": "Sales.CustomerCategories",
+            "referenced_column": "CustomerCategoryID"
+        },
+        {
+            "foreign_key": "FK_Sales_SpecialDeals_CustomerID_Sales_Customers",
+            "parent_table": "Sales.SpecialDeals",
+            "parent_column": "CustomerID",
+            "referenced_table": "Sales.Customers",
+            "referenced_column": "CustomerID"
+        },
+        {
+            "foreign_key": "FK_Sales_SpecialDeals_StockGroupID_Warehouse_StockGroups",
+            "parent_table": "Sales.SpecialDeals",
+            "parent_column": "StockGroupID",
+            "referenced_table": "Warehouse.StockGroups",
+            "referenced_column": "StockGroupID"
+        },
+        {
+            "foreign_key": "FK_Sales_SpecialDeals_StockItemID_Warehouse_StockItems",
+            "parent_table": "Sales.SpecialDeals",
+            "parent_column": "StockItemID",
+            "referenced_table": "Warehouse.StockItems",
+            "referenced_column": "StockItemID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_Colors_Application_People",
+            "parent_table": "Warehouse.Colors",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_PackageTypes_Application_People",
+            "parent_table": "Warehouse.PackageTypes",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockGroups_Application_People",
+            "parent_table": "Warehouse.StockGroups",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemHoldings_Application_People",
+            "parent_table": "Warehouse.StockItemHoldings",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItems_Application_People",
+            "parent_table": "Warehouse.StockItems",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItems_ColorID_Warehouse_Colors",
+            "parent_table": "Warehouse.StockItems",
+            "parent_column": "ColorID",
+            "referenced_table": "Warehouse.Colors",
+            "referenced_column": "ColorID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItems_OuterPackageID_Warehouse_PackageTypes",
+            "parent_table": "Warehouse.StockItems",
+            "parent_column": "OuterPackageID",
+            "referenced_table": "Warehouse.PackageTypes",
+            "referenced_column": "PackageTypeID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItems_SupplierID_Purchasing_Suppliers",
+            "parent_table": "Warehouse.StockItems",
+            "parent_column": "SupplierID",
+            "referenced_table": "Purchasing.Suppliers",
+            "referenced_column": "SupplierID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItems_UnitPackageID_Warehouse_PackageTypes",
+            "parent_table": "Warehouse.StockItems",
+            "parent_column": "UnitPackageID",
+            "referenced_table": "Warehouse.PackageTypes",
+            "referenced_column": "PackageTypeID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemStockGroups_Application_People",
+            "parent_table": "Warehouse.StockItemStockGroups",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemStockGroups_StockGroupID_Warehouse_StockGroups",
+            "parent_table": "Warehouse.StockItemStockGroups",
+            "parent_column": "StockGroupID",
+            "referenced_table": "Warehouse.StockGroups",
+            "referenced_column": "StockGroupID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemStockGroups_StockItemID_Warehouse_StockItems",
+            "parent_table": "Warehouse.StockItemStockGroups",
+            "parent_column": "StockItemID",
+            "referenced_table": "Warehouse.StockItems",
+            "referenced_column": "StockItemID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemTransactions_Application_People",
+            "parent_table": "Warehouse.StockItemTransactions",
+            "parent_column": "LastEditedBy",
+            "referenced_table": "Application.People",
+            "referenced_column": "PersonID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemTransactions_CustomerID_Sales_Customers",
+            "parent_table": "Warehouse.StockItemTransactions",
+            "parent_column": "CustomerID",
+            "referenced_table": "Sales.Customers",
+            "referenced_column": "CustomerID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemTransactions_InvoiceID_Sales_Invoices",
+            "parent_table": "Warehouse.StockItemTransactions",
+            "parent_column": "InvoiceID",
+            "referenced_table": "Sales.Invoices",
+            "referenced_column": "InvoiceID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemTransactions_PurchaseOrderID_Purchasing_PurchaseOrders",
+            "parent_table": "Warehouse.StockItemTransactions",
+            "parent_column": "PurchaseOrderID",
+            "referenced_table": "Purchasing.PurchaseOrders",
+            "referenced_column": "PurchaseOrderID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemTransactions_StockItemID_Warehouse_StockItems",
+            "parent_table": "Warehouse.StockItemTransactions",
+            "parent_column": "StockItemID",
+            "referenced_table": "Warehouse.StockItems",
+            "referenced_column": "StockItemID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemTransactions_SupplierID_Purchasing_Suppliers",
+            "parent_table": "Warehouse.StockItemTransactions",
+            "parent_column": "SupplierID",
+            "referenced_table": "Purchasing.Suppliers",
+            "referenced_column": "SupplierID"
+        },
+        {
+            "foreign_key": "FK_Warehouse_StockItemTransactions_TransactionTypeID_Application_TransactionTypes",
+            "parent_table": "Warehouse.StockItemTransactions",
+            "parent_column": "TransactionTypeID",
+            "referenced_table": "Application.TransactionTypes",
+            "referenced_column": "TransactionTypeID"
+        },
+        {
+            "foreign_key": "PKFK_Warehouse_StockItemHoldings_StockItemID_Warehouse_StockItems",
+            "parent_table": "Warehouse.StockItemHoldings",
+            "parent_column": "StockItemID",
+            "referenced_table": "Warehouse.StockItems",
+            "referenced_column": "StockItemID"
+        }
+    ]
+}

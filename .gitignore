@@ -1,0 +1,8 @@
+.venv/
+.env
+__pycache__/
+*.pyc
+vector_db/
+conversation_memory.db
+conversation_memory.db-shm
+conversation_memory.db-wal

@@ -1,0 +1,455 @@
+
+TABLE: dbo.customer
+  c_customer_sk | bigint | Length: 8 | NOT NULL
+  c_customer_id | char | Length: 16 | NOT NULL
+  c_current_cdemo_sk | bigint | Length: 8 | NULL
+  c_current_hdemo_sk | bigint | Length: 8 | NULL
+  c_current_addr_sk | bigint | Length: 8 | NULL
+  c_first_shipto_date_sk | bigint | Length: 8 | NULL
+  c_first_sales_date_sk | bigint | Length: 8 | NULL
+  c_salutation | char | Length: 10 | NULL
+  c_first_name | char | Length: 20 | NULL
+  c_last_name | char | Length: 30 | NULL
+  c_preferred_cust_flag | char | Length: 1 | NULL
+  c_birth_day | int | Length: 4 | NULL
+  c_birth_month | int | Length: 4 | NULL
+  c_birth_year | int | Length: 4 | NULL
+  c_birth_country | varchar | Length: 20 | NULL
+  c_login | char | Length: 13 | NULL
+  c_email_address | char | Length: 50 | NULL
+  c_last_review_date | char | Length: 10 | NULL
+
+TABLE: dbo.customer_address
+  ca_address_sk | bigint | Length: 8 | NOT NULL
+  ca_address_id | char | Length: 16 | NOT NULL
+  ca_street_number | char | Length: 10 | NULL
+  ca_street_name | varchar | Length: 60 | NULL
+  ca_street_type | char | Length: 15 | NULL
+  ca_suite_number | char | Length: 10 | NULL
+  ca_city | varchar | Length: 60 | NULL
+  ca_county | varchar | Length: 30 | NULL
+  ca_state | char | Length: 2 | NULL
+  ca_zip | char | Length: 10 | NULL
+  ca_country | varchar | Length: 20 | NULL
+  ca_gmt_offset | decimal | Length: 5 | NULL
+  ca_location_type | char | Length: 20 | NULL
+
+TABLE: dbo.customer_book_clusters
+  cluster | int | Length: 4 | NULL
+  ss_customer_sk | bigint | Length: 8 | NULL
+
+TABLE: dbo.customer_clusters
+  cluster | int | Length: 4 | NULL
+  customer_sk | bigint | Length: 8 | NULL
+
+TABLE: dbo.customer_demographics
+  cd_demo_sk | bigint | Length: 8 | NOT NULL
+  cd_gender | char | Length: 1 | NULL
+  cd_marital_status | char | Length: 1 | NULL
+  cd_education_status | char | Length: 20 | NULL
+  cd_purchase_estimate | int | Length: 4 | NULL
+  cd_credit_rating | char | Length: 10 | NULL
+  cd_dep_count | int | Length: 4 | NULL
+  cd_dep_employed_count | int | Length: 4 | NULL
+  cd_dep_college_count | int | Length: 4 | NULL
+
+TABLE: dbo.customer_return_clusters
+  cluster | int | Length: 4 | NULL
+  user_sk | bigint | Length: 8 | NULL
+  orderRatio | float | Length: 8 | NULL
+  itemsRatio | float | Length: 8 | NULL
+  monetaryRatio | float | Length: 8 | NULL
+  frequency | int | Length: 4 | NULL
+
+TABLE: dbo.date_dim
+  d_date_sk | bigint | Length: 8 | NOT NULL
+  d_date_id | char | Length: 16 | NOT NULL
+  d_date | date | Length: 3 | NULL
+  d_month_seq | int | Length: 4 | NULL
+  d_week_seq | int | Length: 4 | NULL
+  d_quarter_seq | int | Length: 4 | NULL
+  d_year | int | Length: 4 | NULL
+  d_dow | int | Length: 4 | NULL
+  d_moy | int | Length: 4 | NULL
+  d_dom | int | Length: 4 | NULL
+  d_qoy | int | Length: 4 | NULL
+  d_fy_year | int | Length: 4 | NULL
+  d_fy_quarter_seq | int | Length: 4 | NULL
+  d_fy_week_seq | int | Length: 4 | NULL
+  d_day_name | char | Length: 9 | NULL
+  d_quarter_name | char | Length: 6 | NULL
+  d_holiday | char | Length: 1 | NULL
+  d_weekend | char | Length: 1 | NULL
+  d_following_holiday | char | Length: 1 | NULL
+  d_first_dom | int | Length: 4 | NULL
+  d_last_dom | int | Length: 4 | NULL
+  d_same_day_ly | int | Length: 4 | NULL
+  d_same_day_lq | int | Length: 4 | NULL
+  d_current_day | char | Length: 1 | NULL
+  d_current_week | char | Length: 1 | NULL
+  d_current_month | char | Length: 1 | NULL
+  d_current_quarter | char | Length: 1 | NULL
+  d_current_year | char | Length: 1 | NULL
+
+TABLE: dbo.household_demographics
+  hd_demo_sk | bigint | Length: 8 | NOT NULL
+  hd_income_band_sk | bigint | Length: 8 | NULL
+  hd_buy_potential | char | Length: 15 | NULL
+  hd_dep_count | int | Length: 4 | NULL
+  hd_vehicle_count | int | Length: 4 | NULL
+
+TABLE: dbo.income_band
+  ib_income_band_sk | bigint | Length: 8 | NOT NULL
+  ib_lower_bound | int | Length: 4 | NULL
+  ib_upper_bound | int | Length: 4 | NULL
+
+TABLE: dbo.inventory
+  inv_date_sk | bigint | Length: 8 | NOT NULL
+  inv_item_sk | bigint | Length: 8 | NOT NULL
+  inv_warehouse_sk | bigint | Length: 8 | NOT NULL
+  inv_quantity_on_hand | int | Length: 4 | NULL
+
+TABLE: dbo.item
+  i_item_sk | bigint | Length: 8 | NOT NULL
+  i_item_id | char | Length: 16 | NOT NULL
+  i_rec_start_date | date | Length: 3 | NULL
+  i_rec_end_date | date | Length: 3 | NULL
+  i_item_desc | varchar | Length: 200 | NULL
+  i_current_price | decimal | Length: 5 | NULL
+  i_wholesale_cost | decimal | Length: 5 | NULL
+  i_brand_id | int | Length: 4 | NULL
+  i_brand | char | Length: 50 | NULL
+  i_class_id | int | Length: 4 | NULL
+  i_class | char | Length: 50 | NULL
+  i_category_id | int | Length: 4 | NULL
+  i_category | char | Length: 50 | NULL
+  i_manufact_id | int | Length: 4 | NULL
+  i_manufact | char | Length: 50 | NULL
+  i_size | char | Length: 20 | NULL
+  i_formulation | char | Length: 20 | NULL
+  i_color | char | Length: 20 | NULL
+  i_units | char | Length: 10 | NULL
+  i_container | char | Length: 10 | NULL
+  i_manager_id | int | Length: 4 | NULL
+  i_product_name | char | Length: 50 | NULL
+
+TABLE: dbo.item_marketprices
+  imp_sk | bigint | Length: 8 | NOT NULL
+  imp_item_sk | bigint | Length: 8 | NOT NULL
+  imp_competitor | varchar | Length: 20 | NULL
+  imp_competitor_price | decimal | Length: 5 | NULL
+  imp_start_date | bigint | Length: 8 | NULL
+  imp_end_date | bigint | Length: 8 | NULL
+
+TABLE: dbo.product_reviews
+  pr_review_sk | bigint | Length: 8 | NOT NULL
+  pr_review_date | date | Length: 3 | NULL
+  pr_review_time | char | Length: 8 | NULL
+  pr_review_rating | int | Length: 4 | NOT NULL
+  pr_item_sk | bigint | Length: 8 | NOT NULL
+  pr_user_sk | bigint | Length: 8 | NULL
+  pr_order_sk | bigint | Length: 8 | NULL
+  pr_review_content | varchar | Length: 8000 | NOT NULL
+
+TABLE: dbo.promotion
+  p_promo_sk | bigint | Length: 8 | NOT NULL
+  p_promo_id | char | Length: 16 | NOT NULL
+  p_start_date_sk | bigint | Length: 8 | NULL
+  p_end_date_sk | bigint | Length: 8 | NULL
+  p_item_sk | bigint | Length: 8 | NULL
+  p_cost | decimal | Length: 9 | NULL
+  p_response_target | int | Length: 4 | NULL
+  p_promo_name | char | Length: 50 | NULL
+  p_channel_dmail | char | Length: 1 | NULL
+  p_channel_email | char | Length: 1 | NULL
+  p_channel_catalog | char | Length: 1 | NULL
+  p_channel_tv | char | Length: 1 | NULL
+  p_channel_radio | char | Length: 1 | NULL
+  p_channel_press | char | Length: 1 | NULL
+  p_channel_event | char | Length: 1 | NULL
+  p_channel_demo | char | Length: 1 | NULL
+  p_channel_details | varchar | Length: 100 | NULL
+  p_purpose | char | Length: 15 | NULL
+  p_discount_active | char | Length: 1 | NULL
+
+TABLE: dbo.reason
+  r_reason_sk | bigint | Length: 8 | NULL
+  r_reason_id | char | Length: 16 | NULL
+  r_reason_desc | char | Length: 100 | NULL
+
+TABLE: dbo.ship_mode
+  sm_ship_mode_sk | bigint | Length: 8 | NOT NULL
+  sm_ship_mode_id | char | Length: 16 | NOT NULL
+  sm_type | char | Length: 30 | NULL
+  sm_code | char | Length: 10 | NULL
+  sm_carrier | char | Length: 20 | NULL
+  sm_contract | char | Length: 20 | NULL
+
+TABLE: dbo.store
+  s_store_sk | bigint | Length: 8 | NOT NULL
+  s_store_id | char | Length: 16 | NOT NULL
+  s_rec_start_date | date | Length: 3 | NULL
+  s_rec_end_date | date | Length: 3 | NULL
+  s_closed_date_sk | bigint | Length: 8 | NULL
+  s_store_name | varchar | Length: 50 | NULL
+  s_number_employees | int | Length: 4 | NULL
+  s_floor_space | int | Length: 4 | NULL
+  s_hours | char | Length: 20 | NULL
+  s_manager | varchar | Length: 40 | NULL
+  s_market_id | int | Length: 4 | NULL
+  s_geography_class | varchar | Length: 100 | NULL
+  s_market_desc | varchar | Length: 100 | NULL
+  s_market_manager | varchar | Length: 40 | NULL
+  s_division_id | int | Length: 4 | NULL
+  s_division_name | varchar | Length: 50 | NULL
+  s_company_id | int | Length: 4 | NULL
+  s_company_name | varchar | Length: 50 | NULL
+  s_street_number | varchar | Length: 10 | NULL
+  s_street_name | varchar | Length: 60 | NULL
+  s_street_type | char | Length: 15 | NULL
+  s_suite_number | char | Length: 10 | NULL
+  s_city | varchar | Length: 60 | NULL
+  s_county | varchar | Length: 30 | NULL
+  s_state | char | Length: 2 | NULL
+  s_zip | char | Length: 10 | NULL
+  s_country | varchar | Length: 20 | NULL
+  s_gmt_offset | decimal | Length: 5 | NULL
+  s_tax_precentage | decimal | Length: 5 | NULL
+
+TABLE: dbo.store_returns
+  sr_returned_date_sk | bigint | Length: 8 | NULL
+  sr_return_time_sk | bigint | Length: 8 | NULL
+  sr_item_sk | bigint | Length: 8 | NOT NULL
+  sr_customer_sk | bigint | Length: 8 | NULL
+  sr_cdemo_sk | bigint | Length: 8 | NULL
+  sr_hdemo_sk | bigint | Length: 8 | NULL
+  sr_addr_sk | bigint | Length: 8 | NULL
+  sr_store_sk | bigint | Length: 8 | NULL
+  sr_reason_sk | bigint | Length: 8 | NULL
+  sr_ticket_number | bigint | Length: 8 | NOT NULL
+  sr_return_quantity | int | Length: 4 | NULL
+  sr_return_amt | decimal | Length: 5 | NULL
+  sr_return_tax | decimal | Length: 5 | NULL
+  sr_return_amt_inc_tax | decimal | Length: 5 | NULL
+  sr_fee | decimal | Length: 5 | NULL
+  sr_return_ship_cost | decimal | Length: 5 | NULL
+  sr_refunded_cash | decimal | Length: 5 | NULL
+  sr_reversed_charge | decimal | Length: 5 | NULL
+  sr_store_credit | decimal | Length: 5 | NULL
+  sr_net_loss | decimal | Length: 5 | NULL
+
+TABLE: dbo.store_sales
+  ss_sold_date_sk | bigint | Length: 8 | NULL
+  ss_sold_time_sk | bigint | Length: 8 | NULL
+  ss_item_sk | bigint | Length: 8 | NOT NULL
+  ss_customer_sk | bigint | Length: 8 | NULL
+  ss_cdemo_sk | bigint | Length: 8 | NULL
+  ss_hdemo_sk | bigint | Length: 8 | NULL
+  ss_addr_sk | bigint | Length: 8 | NULL
+  ss_store_sk | bigint | Length: 8 | NULL
+  ss_promo_sk | bigint | Length: 8 | NULL
+  ss_ticket_number | bigint | Length: 8 | NOT NULL
+  ss_quantity | int | Length: 4 | NULL
+  ss_wholesale_cost | decimal | Length: 5 | NULL
+  ss_list_price | decimal | Length: 5 | NULL
+  ss_sales_price | decimal | Length: 5 | NULL
+  ss_ext_discount_amt | decimal | Length: 5 | NULL
+  ss_ext_sales_price | decimal | Length: 5 | NULL
+  ss_ext_wholesale_cost | decimal | Length: 5 | NULL
+  ss_ext_list_price | decimal | Length: 5 | NULL
+  ss_ext_tax | decimal | Length: 5 | NULL
+  ss_coupon_amt | decimal | Length: 5 | NULL
+  ss_net_paid | decimal | Length: 5 | NULL
+  ss_net_paid_inc_tax | decimal | Length: 5 | NULL
+  ss_net_profit | decimal | Length: 5 | NULL
+
+TABLE: dbo.time_dim
+  t_time_sk | bigint | Length: 8 | NOT NULL
+  t_time_id | char | Length: 16 | NOT NULL
+  t_time | int | Length: 4 | NULL
+  t_hour | int | Length: 4 | NULL
+  t_minute | int | Length: 4 | NULL
+  t_second | int | Length: 4 | NULL
+  t_am_pm | char | Length: 2 | NULL
+  t_shift | char | Length: 20 | NULL
+  t_sub_shift | char | Length: 20 | NULL
+  t_meal_time | char | Length: 20 | NULL
+
+TABLE: dbo.warehouse
+  w_warehouse_sk | bigint | Length: 8 | NOT NULL
+  w_warehouse_id | char | Length: 16 | NOT NULL
+  w_warehouse_name | varchar | Length: 20 | NULL
+  w_warehouse_sq_ft | int | Length: 4 | NULL
+  w_street_number | char | Length: 10 | NULL
+  w_street_name | varchar | Length: 60 | NULL
+  w_street_type | char | Length: 15 | NULL
+  w_suite_number | char | Length: 10 | NULL
+  w_city | varchar | Length: 60 | NULL
+  w_county | varchar | Length: 30 | NULL
+  w_state | char | Length: 2 | NULL
+  w_zip | char | Length: 10 | NULL
+  w_country | varchar | Length: 20 | NULL
+  w_gmt_offset | decimal | Length: 5 | NULL
+
+TABLE: dbo.web_clickstreams
+  wcs_click_date_sk | bigint | Length: 8 | NULL
+  wcs_click_time_sk | bigint | Length: 8 | NULL
+  wcs_sales_sk | bigint | Length: 8 | NULL
+  wcs_item_sk | bigint | Length: 8 | NULL
+  wcs_web_page_sk | bigint | Length: 8 | NULL
+  wcs_user_sk | bigint | Length: 8 | NULL
+
+TABLE: dbo.web_page
+  wp_web_page_sk | bigint | Length: 8 | NOT NULL
+  wp_web_page_id | char | Length: 16 | NOT NULL
+  wp_rec_start_date | date | Length: 3 | NULL
+  wp_rec_end_date | date | Length: 3 | NULL
+  wp_creation_date_sk | bigint | Length: 8 | NULL
+  wp_access_date_sk | bigint | Length: 8 | NULL
+  wp_autogen_flag | char | Length: 1 | NULL
+  wp_customer_sk | bigint | Length: 8 | NULL
+  wp_url | varchar | Length: 100 | NULL
+  wp_type | char | Length: 50 | NULL
+  wp_char_count | int | Length: 4 | NULL
+  wp_link_count | int | Length: 4 | NULL
+  wp_image_count | int | Length: 4 | NULL
+  wp_max_ad_count | int | Length: 4 | NULL
+
+TABLE: dbo.web_returns
+  wr_returned_date_sk | bigint | Length: 8 | NULL
+  wr_returned_time_sk | bigint | Length: 8 | NULL
+  wr_item_sk | bigint | Length: 8 | NOT NULL
+  wr_refunded_customer_sk | bigint | Length: 8 | NULL
+  wr_refunded_cdemo_sk | bigint | Length: 8 | NULL
+  wr_refunded_hdemo_sk | bigint | Length: 8 | NULL
+  wr_refunded_addr_sk | bigint | Length: 8 | NULL
+  wr_returning_customer_sk | bigint | Length: 8 | NULL
+  wr_returning_cdemo_sk | bigint | Length: 8 | NULL
+  wr_returning_hdemo_sk | bigint | Length: 8 | NULL
+  wr_returning_addr_sk | bigint | Length: 8 | NULL
+  wr_web_page_sk | bigint | Length: 8 | NULL
+  wr_reason_sk | bigint | Length: 8 | NULL
+  wr_order_number | bigint | Length: 8 | NOT NULL
+  wr_return_quantity | int | Length: 4 | NULL
+  wr_return_amt | decimal | Length: 5 | NULL
+  wr_return_tax | decimal | Length: 5 | NULL
+  wr_return_amt_inc_tax | decimal | Length: 5 | NULL
+  wr_fee | decimal | Length: 5 | NULL
+  wr_return_ship_cost | decimal | Length: 5 | NULL
+  wr_refunded_cash | decimal | Length: 5 | NULL
+  wr_reversed_charge | decimal | Length: 5 | NULL
+  wr_account_credit | decimal | Length: 5 | NULL
+  wr_net_loss | decimal | Length: 5 | NULL
+
+TABLE: dbo.web_sales
+  ws_sold_date_sk | bigint | Length: 8 | NULL
+  ws_sold_time_sk | bigint | Length: 8 | NULL
+  ws_ship_date_sk | bigint | Length: 8 | NULL
+  ws_item_sk | bigint | Length: 8 | NOT NULL
+  ws_bill_customer_sk | bigint | Length: 8 | NULL
+  ws_bill_cdemo_sk | bigint | Length: 8 | NULL
+  ws_bill_hdemo_sk | bigint | Length: 8 | NULL
+  ws_bill_addr_sk | bigint | Length: 8 | NULL
+  ws_ship_customer_sk | bigint | Length: 8 | NULL
+  ws_ship_cdemo_sk | bigint | Length: 8 | NULL
+  ws_ship_hdemo_sk | bigint | Length: 8 | NULL
+  ws_ship_addr_sk | bigint | Length: 8 | NULL
+  ws_web_page_sk | bigint | Length: 8 | NULL
+  ws_web_site_sk | bigint | Length: 8 | NULL
+  ws_ship_mode_sk | bigint | Length: 8 | NULL
+  ws_warehouse_sk | bigint | Length: 8 | NULL
+  ws_promo_sk | bigint | Length: 8 | NULL
+  ws_order_number | bigint | Length: 8 | NOT NULL
+  ws_quantity | int | Length: 4 | NULL
+  ws_wholesale_cost | decimal | Length: 5 | NULL
+  ws_list_price | decimal | Length: 5 | NULL
+  ws_sales_price | decimal | Length: 5 | NULL
+  ws_ext_discount_amt | decimal | Length: 5 | NULL
+  ws_ext_sales_price | decimal | Length: 5 | NULL
+  ws_ext_wholesale_cost | decimal | Length: 5 | NULL
+  ws_ext_list_price | decimal | Length: 5 | NULL
+  ws_ext_tax | decimal | Length: 5 | NULL
+  ws_coupon_amt | decimal | Length: 5 | NULL
+  ws_ext_ship_cost | decimal | Length: 5 | NULL
+  ws_net_paid | decimal | Length: 5 | NULL
+  ws_net_paid_inc_tax | decimal | Length: 5 | NULL
+  ws_net_paid_inc_ship | decimal | Length: 5 | NULL
+  ws_net_paid_inc_ship_tax | decimal | Length: 5 | NULL
+  ws_net_profit | decimal | Length: 5 | NULL
+
+TABLE: dbo.web_site
+  web_site_sk | bigint | Length: 8 | NOT NULL
+  web_site_id | char | Length: 16 | NOT NULL
+  web_rec_start_date | date | Length: 3 | NULL
+  web_rec_end_date | date | Length: 3 | NULL
+  web_name | varchar | Length: 50 | NULL
+  web_open_date_sk | bigint | Length: 8 | NULL
+  web_close_date_sk | bigint | Length: 8 | NULL
+  web_class | varchar | Length: 50 | NULL
+  web_manager | varchar | Length: 40 | NULL
+  web_mkt_id | int | Length: 4 | NULL
+  web_mkt_class | varchar | Length: 50 | NULL
+  web_mkt_desc | varchar | Length: 100 | NULL
+  web_market_manager | varchar | Length: 40 | NULL
+  web_company_id | int | Length: 4 | NULL
+  web_company_name | char | Length: 50 | NULL
+  web_street_number | char | Length: 10 | NULL
+  web_street_name | varchar | Length: 60 | NULL
+  web_street_type | char | Length: 15 | NULL
+  web_suite_number | char | Length: 10 | NULL
+  web_city | varchar | Length: 60 | NULL
+  web_county | varchar | Length: 30 | NULL
+  web_state | char | Length: 2 | NULL
+  web_zip | char | Length: 10 | NULL
+  web_country | varchar | Length: 20 | NULL
+  web_gmt_offset | decimal | Length: 5 | NULL
+  web_tax_percentage | decimal | Length: 5 | NULL
+
+TABLE: sqlr.model_scoring_history
+  run_id | int | Length: 4 | NOT NULL PRIMARY KEY
+  model_id | int | Length: 4 | NOT NULL
+  scoring_characteristics | varchar | Length: 8000 | NULL
+  scoring_duration_ms | bigint | Length: 8 | NOT NULL
+  scoring_sample_rows | bigint | Length: 8 | NOT NULL
+  created_by | nvarchar | Length: 510 | NOT NULL
+  create_time | datetime2 | Length: 8 | NOT NULL
+  host_name | nvarchar | Length: 256 | NOT NULL
+  app_name | nvarchar | Length: 256 | NOT NULL
+
+TABLE: sqlr.model_training_history
+  run_id | int | Length: 4 | NOT NULL PRIMARY KEY
+  model_id | int | Length: 4 | NOT NULL
+  model_function_call | nvarchar | Length: -1 | NOT NULL
+  model_formula | nvarchar | Length: -1 | NOT NULL
+  model_valid_observations | int | Length: 4 | NULL
+  model_iterations | int | Length: 4 | NULL
+  model_characteristics | nvarchar | Length: -1 | NULL
+  model_object | varbinary | Length: -1 | NOT NULL
+  model_size | bigint | Length: 8 | NULL
+  model_generation_duration_ms | float | Length: 8 | NOT NULL
+  training_duration_ms | bigint | Length: 8 | NOT NULL
+  created_by | nvarchar | Length: 510 | NOT NULL
+  create_time | datetime2 | Length: 8 | NOT NULL
+  host_name | nvarchar | Length: 256 | NOT NULL
+  app_name | nvarchar | Length: 256 | NOT NULL
+
+TABLE: sqlr.models
+  model_id | int | Length: 4 | NOT NULL PRIMARY KEY
+  model_name | nvarchar | Length: 200 | NOT NULL
+  model_type | nvarchar | Length: 200 | NULL
+  model_description | varchar | Length: 1000 | NULL
+  model_version | int | Length: 4 | NOT NULL
+  created_by | nvarchar | Length: 510 | NOT NULL
+  create_time | datetime2 | Length: 8 | NOT NULL
+  modified_by | nvarchar | Length: 510 | NOT NULL
+  modified_time | datetime2 | Length: 8 | NOT NULL
+  host_name | nvarchar | Length: 256 | NOT NULL
+  app_name | nvarchar | Length: 256 | NOT NULL
+
+TABLE: sqlr.scripts
+  script_name | varchar | Length: 100 | NOT NULL PRIMARY KEY
+  script_definition | nvarchar | Length: -1 | NOT NULL
+  created_by | nvarchar | Length: 510 | NOT NULL PRIMARY KEY
+  create_time | datetime2 | Length: 8 | NOT NULL
+  host_name | nvarchar | Length: 256 | NOT NULL
+  app_name | nvarchar | Length: 256 | NOT NULL
