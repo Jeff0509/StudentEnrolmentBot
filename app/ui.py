@@ -11,68 +11,65 @@ from app.memory import (
     get_history,
     get_recent_conversations
 )
-from app.sql_tools import (
-    get_monthly_sales_summary,
-    get_top_selling_products
-)
 
+
+# ============================================================
+# 1. STREAMLIT CONFIGURATION
+# ============================================================
 
 st.set_page_config(
-    page_title="Wide World Importers AI",
+    page_title="WideWorldImporters AI",
     page_icon="🤖",
     layout="wide"
 )
 
 
-# --------------------------------------------------
-# Dashboard data
-# --------------------------------------------------
-
-@st.cache_data(ttl=300)
-def load_monthly_sales():
-    return get_monthly_sales_summary()
-
-
-@st.cache_data(ttl=300)
-def load_top_products():
-    return get_top_selling_products()
-
-
-# --------------------------------------------------
-# Conversation initialisation
-# --------------------------------------------------
+# ============================================================
+# 2. SESSION STATE
+# ============================================================
 
 if "conversation_id" not in st.session_state:
     conversation_id = str(uuid.uuid4())
+
     create_conversation(conversation_id)
+
     st.session_state.conversation_id = conversation_id
 
 
-# --------------------------------------------------
-# Sidebar
-# --------------------------------------------------
+# ============================================================
+# 3. SIDEBAR
+# ============================================================
 
 with st.sidebar:
 
-    st.title("WWI AI Assistant")
+    st.title("🤖 WWI AI Assistant")
 
-    st.caption("WideWorldImporters Business Intelligence")
+    st.caption(
+        "WideWorldImporters Business Intelligence"
+    )
 
     st.divider()
 
+    # New conversation
     if st.button(
         "＋ New conversation",
         use_container_width=True
     ):
+
         new_id = str(uuid.uuid4())
+
         create_conversation(new_id)
 
         st.session_state.conversation_id = new_id
+
         st.rerun()
 
+    # Recent conversations
     st.subheader("Recent conversations")
 
-    conversations = get_recent_conversations(limit=20)
+    conversations = get_recent_conversations(
+        limit=20
+    )
 
     conversation_ids = [
         item["conversation_id"]
@@ -92,7 +89,9 @@ with st.sidebar:
     )
 
     if selected_id != current_id:
+
         st.session_state.conversation_id = selected_id
+
         st.rerun()
 
     st.divider()
@@ -100,71 +99,107 @@ with st.sidebar:
     st.caption(
         "AI powered by DeepSeek\n\n"
         "Database: SQL Server\n\n"
-        "Sample data: WideWorldImporters"
+        "Data source: WideWorldImporters"
     )
 
 
-# --------------------------------------------------
-# Main page
-# --------------------------------------------------
+# ============================================================
+# 4. MAIN PAGE HEADER
+# ============================================================
 
 st.title("🤖 WideWorldImporters AI Assistant")
 
 st.markdown(
-    "Business intelligence dashboard and AI data assistant."
+    """
+    Ask questions about:
+
+    - Sales performance
+    - Customers and suppliers
+    - Products and stock groups
+    - Revenue trends
+    - Inventory
+    - Business operations
+    """
 )
 
-dashboard_tab, chat_tab = st.tabs([
-    "📊 Dashboard",
-    "💬 AI Chat"
-])
+st.caption(
+    f"Conversation ID: {st.session_state.conversation_id}"
+)
+
+st.divider()
 
 
-# ==================================================
-# DASHBOARD TAB
-# ==================================================
+# ============================================================
+# 5. DISPLAY CONVERSATION HISTORY
+# ============================================================
 
-with dashboard_tab:
+history = get_history(
+    st.session_state.conversation_id,
+    max_messages=100
+)
 
-    st.header("Sales Performance")
+for message in history:
 
-    st.caption(
-        "Data retrieved directly from SQL Server. "
-        "Dashboard data is cached for 5 minutes."
-    )
+    with st.chat_message(message["role"]):
 
-    try:
+        st.markdown(message["content"])
 
-        monthly_data = load_monthly_sales()
-        product_data = load_top_products()
 
-        monthly_df = pd.DataFrame(monthly_data)
-        products_df = pd.DataFrame(product_data)
+# ============================================================
+# 6. CHART RENDERING FUNCTION
+# ============================================================
 
-        if monthly_df.empty:
-            st.warning("No monthly sales data was returned.")
-        else:
+def display_tool_results(tool_results):
 
-            monthly_df["TotalRevenue"] = pd.to_numeric(
-                monthly_df["TotalRevenue"]
+    for tool_result in tool_results:
+
+        tool_name = tool_result["tool_name"]
+
+        data = tool_result["data"]
+
+        if not data:
+            continue
+
+        df = pd.DataFrame(data)
+
+        # Convert revenue to numeric
+        if "TotalRevenue" in df.columns:
+
+            df["TotalRevenue"] = pd.to_numeric(
+                df["TotalRevenue"],
+                errors="coerce"
             )
 
-            monthly_df["UnitsSold"] = pd.to_numeric(
-                monthly_df["UnitsSold"]
+        st.divider()
+
+        # ----------------------------------------------------
+        # 6.1 MONTHLY SALES
+        # ----------------------------------------------------
+
+        if tool_name == "get_monthly_sales_summary":
+
+            df["SalesMonth"] = pd.to_datetime(
+                df["SalesMonth"]
             )
 
-            monthly_df["InvoiceCount"] = pd.to_numeric(
-                monthly_df["InvoiceCount"]
+            df = df.sort_values(
+                "SalesMonth"
             )
 
-            total_revenue = monthly_df["TotalRevenue"].sum()
-            total_units = monthly_df["UnitsSold"].sum()
-            total_invoices = monthly_df["InvoiceCount"].sum()
+            st.subheader(
+                "📈 Monthly Sales Dashboard"
+            )
 
             col1, col2, col3 = st.columns(3)
 
+            total_revenue = df["TotalRevenue"].sum()
+
+            total_units = df["UnitsSold"].sum()
+
+            total_invoices = df["InvoiceCount"].sum()
+
             col1.metric(
-                "Total Invoiced Revenue",
+                "Total Revenue",
                 f"${total_revenue:,.2f}"
             )
 
@@ -174,137 +209,251 @@ with dashboard_tab:
             )
 
             col3.metric(
-                "Invoice Count",
+                "Invoices",
                 f"{total_invoices:,.0f}"
             )
 
-            st.divider()
-
-            st.subheader("Monthly Sales Trend")
-
-            monthly_chart = px.line(
-                monthly_df,
+            fig = px.line(
+                df,
                 x="SalesMonth",
                 y="TotalRevenue",
+                title="Monthly Revenue Trend",
                 markers=True,
-                title="Monthly Invoiced Revenue"
+                labels={
+                    "SalesMonth": "Month",
+                    "TotalRevenue": "Revenue ($)"
+                },
+                hover_data={
+                    "UnitsSold": True,
+                    "InvoiceCount": True
+                }
             )
 
-            monthly_chart.update_layout(
-                xaxis_title="Month",
-                yaxis_title="Revenue",
-                hovermode="x unified"
+            fig.update_yaxes(
+                autorange=True,
+                tickformat=",.0f"
             )
 
-            st.plotly_chart(
-                monthly_chart,
-                use_container_width=True
-            )
-
-        st.divider()
-
-        st.subheader("Top 10 Products by Revenue")
-
-        if products_df.empty:
-            st.warning("No product data was returned.")
-        else:
-
-            products_df["TotalRevenue"] = pd.to_numeric(
-                products_df["TotalRevenue"]
-            )
-
-            products_df["UnitsSold"] = pd.to_numeric(
-                products_df["UnitsSold"]
-            )
-
-            product_chart = px.bar(
-                products_df.sort_values("TotalRevenue"),
-                x="TotalRevenue",
-                y="StockItemName",
-                orientation="h",
-                title="Top 10 Products by Invoiced Revenue"
-            )
-
-            product_chart.update_layout(
-                xaxis_title="Revenue",
-                yaxis_title="Product",
-                showlegend=False
+            fig.update_layout(
+                hovermode="x unified",
+                xaxis_title="Sales Month",
+                yaxis_title="Revenue ($)"
             )
 
             st.plotly_chart(
-                product_chart,
+                fig,
                 use_container_width=True
             )
 
-            st.subheader("Product Details")
+            st.subheader(
+                "Monthly Sales Data"
+            )
 
             st.dataframe(
-                products_df,
+                df,
                 use_container_width=True,
                 hide_index=True
             )
 
-    except Exception as error:
+        # ----------------------------------------------------
+        # 6.2 ANNUAL SALES
+        # ----------------------------------------------------
 
-        st.error(
-            f"Unable to load dashboard data: {error}"
-        )
+        elif tool_name == "get_sales_summary":
+
+            st.subheader(
+                "📊 Annual Sales Performance"
+            )
+
+            df = df.sort_values(
+                "SalesYear"
+            )
+
+            fig = px.bar(
+                df,
+                x="SalesYear",
+                y="TotalRevenue",
+                title="Annual Revenue",
+                labels={
+                    "SalesYear": "Year",
+                    "TotalRevenue": "Revenue ($)"
+                },
+                hover_data=[
+                    "UnitsSold",
+                    "InvoiceCount"
+                ]
+            )
+
+            fig.update_layout(
+                xaxis=dict(type="category"),
+                yaxis_title="Revenue ($)",
+                xaxis_title="Sales Year"
+            )
+
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
+
+            st.subheader(
+                "Annual Sales Data"
+            )
+
+            st.dataframe(
+                df,
+                use_container_width=True,
+                hide_index=True
+            )
+
+        # ----------------------------------------------------
+        # 6.3 SALES BY STOCK GROUP
+        # ----------------------------------------------------
+
+        elif tool_name == "get_sales_by_stock_group":
+
+            st.subheader(
+                "📦 Sales by Stock Group"
+            )
+
+            df = df.sort_values(
+                "TotalRevenue",
+                ascending=True
+            )
+
+            fig = px.bar(
+                df,
+                x="TotalRevenue",
+                y="StockGroupName",
+                orientation="h",
+                title="Revenue by Product Group",
+                labels={
+                    "TotalRevenue": "Revenue ($)",
+                    "StockGroupName": "Stock Group"
+                },
+                hover_data=[
+                    "UnitsSold",
+                    "InvoiceCount"
+                ]
+            )
+
+            fig.update_layout(
+                xaxis_title="Revenue ($)",
+                yaxis_title="Stock Group"
+            )
+
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
+
+            st.subheader(
+                "Stock Group Data"
+            )
+
+            st.dataframe(
+                df.sort_values(
+                    "TotalRevenue",
+                    ascending=False
+                ),
+                use_container_width=True,
+                hide_index=True
+            )
+
+        # ----------------------------------------------------
+        # 6.4 TOP SELLING PRODUCTS
+        # ----------------------------------------------------
+
+        elif tool_name == "get_top_selling_products":
+
+            st.subheader(
+                "🏆 Top 10 Selling Products"
+            )
+
+            df = df.sort_values(
+                "TotalRevenue",
+                ascending=True
+            )
+
+            fig = px.bar(
+                df,
+                x="TotalRevenue",
+                y="StockItemName",
+                orientation="h",
+                title="Top Products by Revenue",
+                labels={
+                    "TotalRevenue": "Revenue ($)",
+                    "StockItemName": "Product"
+                },
+                hover_data=[
+                    "UnitsSold"
+                ]
+            )
+
+            fig.update_layout(
+                xaxis_title="Revenue ($)",
+                yaxis_title="Product"
+            )
+
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
+
+            st.subheader(
+                "Product Sales Data"
+            )
+
+            st.dataframe(
+                df.sort_values(
+                    "TotalRevenue",
+                    ascending=False
+                ),
+                use_container_width=True,
+                hide_index=True
+            )
 
 
-# ==================================================
-# AI CHAT TAB
-# ==================================================
+# ============================================================
+# 7. CHAT INPUT AND AGENT EXECUTION
+# ============================================================
 
-with chat_tab:
+question = st.chat_input(
+    "Ask a business question..."
+)
 
-    st.subheader("Ask your business data assistant")
+if question:
 
-    st.caption(
-        "Ask questions about sales, customers, "
-        "products, suppliers and inventory."
-    )
+    # Display user question
+    with st.chat_message("user"):
 
-    st.caption(
-        f"Conversation ID: "
-        f"{st.session_state.conversation_id}"
-    )
+        st.markdown(question)
 
-    history = get_history(
-        st.session_state.conversation_id,
-        max_messages=100
-    )
+    # Generate assistant response
+    with st.chat_message("assistant"):
 
-    for message in history:
+        with st.spinner(
+            "Analysing your question..."
+        ):
 
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+            try:
 
-    question = st.chat_input(
-        "Ask a business question..."
-    )
+                result = ask_agent(
+                    question,
+                    conversation_id=st.session_state.conversation_id
+                )
 
-    if question:
+                # Display AI explanation
+                st.markdown(
+                    result["answer"]
+                )
 
-        with st.chat_message("user"):
-            st.markdown(question)
+                # Display charts and SQL data
+                display_tool_results(
+                    result["tool_results"]
+                )
 
-        with st.chat_message("assistant"):
+            except Exception as error:
 
-            with st.spinner("Analysing your question..."):
-
-                try:
-
-                    answer = ask_agent(
-                        question,
-                        conversation_id=(
-                            st.session_state.conversation_id
-                        )
-                    )
-
-                    st.markdown(answer)
-
-                except Exception as error:
-
-                    st.error(
-                        f"An error occurred: {error}"
-                    )
+                st.error(
+                    f"An error occurred: {error}"
+                )
