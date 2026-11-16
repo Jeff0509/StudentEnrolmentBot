@@ -22,57 +22,55 @@ from app.sql_tools import (
 # 1. Approved SQL tools
 # -------------------------------------------------
 
+DATE_PARAMETERS = {
+    "type": "object",
+    "properties": {
+        "start_date": {
+            "type": "string",
+            "description": "Optional start date in YYYY-MM-DD format."
+        },
+        "end_date": {
+            "type": "string",
+            "description": "Optional inclusive end date in YYYY-MM-DD format."
+        }
+    },
+    "required": []
+}
+
 TOOLS = [
     {
         "type": "function",
         "function": {
             "name": "get_sales_summary",
-            "description": "Get annual sales revenue, units sold and invoice count.",
-            "parameters": {
-                "type": "object",
-                "properties": {},
-                "required": []
-            }
+            "description": "Get annual sales revenue, units sold and invoice count, optionally filtered by invoice date.",
+            "parameters": DATE_PARAMETERS
         }
     },
     {
         "type": "function",
         "function": {
             "name": "get_top_selling_products",
-            "description": "Get the top 10 selling products ranked by revenue.",
-            "parameters": {
-                "type": "object",
-                "properties": {},
-                "required": []
-            }
+            "description": "Get the top 10 selling products by revenue, optionally filtered by invoice date.",
+            "parameters": DATE_PARAMETERS
         }
     },
     {
         "type": "function",
         "function": {
             "name": "get_monthly_sales_summary",
-            "description": "Get monthly sales revenue, units sold and invoice count, ordered by month.",
-            "parameters": {
-                "type": "object",
-                "properties": {},
-                "required": []
-            }
+            "description": "Get monthly sales revenue, units sold and invoice count, optionally filtered by invoice date.",
+            "parameters": DATE_PARAMETERS
         }
     },
     {
         "type": "function",
         "function": {
             "name": "get_sales_by_stock_group",
-            "description": "Get sales revenue, units sold and invoice count grouped by product stock group.",
-            "parameters": {
-                "type": "object",
-                "properties": {},
-                "required": []
-            }
+            "description": "Get sales revenue, units sold and invoice count by stock group, optionally filtered by invoice date.",
+            "parameters": DATE_PARAMETERS
         }
     }
 ]
-
 
 AVAILABLE_FUNCTIONS = {
     "get_sales_summary": get_sales_summary,
@@ -124,22 +122,58 @@ Content:
 def execute_tool(tool_name, arguments):
 
     if tool_name not in AVAILABLE_FUNCTIONS:
-        raise ValueError(f"Unknown tool: {tool_name}")
-
-    if arguments not in ("", "{}"):
         raise ValueError(
-            f"Unexpected arguments for tool: {tool_name}"
+            f"Tool not allowed: {tool_name}"
         )
 
-    return AVAILABLE_FUNCTIONS[tool_name]()
+    if isinstance(arguments, str):
+        arguments = json.loads(arguments)
 
+    if not isinstance(arguments, dict):
+        raise ValueError("Tool arguments must be a JSON object.")
+
+    allowed_arguments = {"start_date", "end_date"}
+
+    if not set(arguments).issubset(allowed_arguments):
+        raise ValueError("Unsupported tool arguments.")
+
+    start_date = arguments.get("start_date")
+    end_date = arguments.get("end_date")
+
+    from datetime import date
+
+    for field_name, value in (
+        ("start_date", start_date),
+        ("end_date", end_date)
+    ):
+        if value is not None:
+            parsed_date = date.fromisoformat(value)
+
+            if parsed_date.isoformat() != value:
+                raise ValueError(
+                    f"{field_name} must use YYYY-MM-DD format."
+                )
+
+    if start_date and end_date and start_date > end_date:
+        raise ValueError(
+            "Start date cannot be later than end date."
+        )
+
+    return AVAILABLE_FUNCTIONS[tool_name](
+        start_date=start_date,
+        end_date=end_date
+    )
 
 # -------------------------------------------------
 # 4. Combined RAG + SQL + Memory Agent
 # -------------------------------------------------
 
 
-def ask_agent(question, conversation_id="demo-session"):
+def ask_agent(
+    question,
+    conversation_id="demo-session",
+    date_filter=None
+):
     initialise_memory()
 
     # 1. Retrieve relevant business documents locally
@@ -168,6 +202,17 @@ Explain business results clearly.
 
 DOCUMENT CONTEXT:
 {document_context}
+
+DASHBOARD DATE FILTER:
+{date_filter or "No dashboard date filter selected."}
+
+If a dashboard date filter is provided, use its start_date
+and end_date arguments when calling sales SQL tools.
+
+If the user explicitly requests a different date range,
+use the dates specified in the user's question instead.
+
+If neither is provided, retrieve the full available history.
 """
 
     messages = [

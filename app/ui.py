@@ -5,6 +5,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
+from datetime import date
 from app.agent import ask_agent
 from app.memory import (
     create_conversation,
@@ -93,6 +94,41 @@ with st.sidebar:
         st.session_state.conversation_id = selected_id
 
         st.rerun()
+
+    st.divider()
+
+    st.subheader("📅 Sales Date Filter")
+
+    use_date_filter = st.checkbox(
+        "Apply invoice date filter",
+        value=False
+    )
+
+    dashboard_date_filter = None
+
+    if use_date_filter:
+
+        selected_dates = st.date_input(
+            "Select invoice date range",
+            value=(
+                date(2013, 1, 1),
+                date.today()
+            ),
+            help="The end date is inclusive."
+        )
+
+        if len(selected_dates) == 2:
+
+            start_date, end_date = selected_dates
+
+            if start_date > end_date:
+                st.error("Start date must be before end date.")
+
+            else:
+                dashboard_date_filter = {
+                    "start_date": start_date.isoformat(),
+                    "end_date": end_date.isoformat()
+                }
 
     st.divider()
 
@@ -439,7 +475,8 @@ if question:
 
                 result = ask_agent(
                     question,
-                    conversation_id=st.session_state.conversation_id
+                    conversation_id=st.session_state.conversation_id,
+                    date_filter=dashboard_date_filter
                 )
 
                 # Display AI explanation
