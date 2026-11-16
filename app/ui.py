@@ -448,6 +448,120 @@ def display_tool_results(tool_results):
                 hide_index=True
             )
 
+                # ----------------------------------------------------
+        # 6.5 TOP CUSTOMERS
+        # ----------------------------------------------------
+
+        elif tool_name == "get_top_customers":
+
+            st.subheader(
+                "🏆 Top 10 Customers"
+            )
+
+            df = df.sort_values(
+                "TotalRevenue",
+                ascending=True
+            )
+
+            # Customer revenue chart
+            fig = px.bar(
+                df,
+                x="TotalRevenue",
+                y="CustomerName",
+                orientation="h",
+                title="Top 10 Customers by Revenue",
+                labels={
+                    "TotalRevenue": "Revenue ($)",
+                    "CustomerName": "Customer"
+                },
+                hover_data=[
+                    "UnitsSold",
+                    "InvoiceCount"
+                ]
+            )
+
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
+
+            # Customer KPI metrics
+            total_customer_revenue = df["TotalRevenue"].sum()
+            total_customer_units = df["UnitsSold"].sum()
+            total_customer_invoices = df["InvoiceCount"].sum()
+
+            col1, col2, col3 = st.columns(3)
+
+            col1.metric(
+                "Revenue - Top 10",
+                f"${total_customer_revenue:,.2f}"
+            )
+
+            col2.metric(
+                "Units Purchased",
+                f"{total_customer_units:,.0f}"
+            )
+
+            col3.metric(
+                "Invoices",
+                f"{total_customer_invoices:,.0f}"
+            )
+
+            st.dataframe(
+                df.sort_values(
+                    "TotalRevenue",
+                    ascending=False
+                ),
+                use_container_width=True,
+                hide_index=True
+            )
+
+        # ----------------------------------------------------
+        # 6.6 SALES BY CUSTOMER CATEGORY
+        # ----------------------------------------------------
+
+        elif tool_name == "get_sales_by_customer_category":
+
+            st.subheader(
+                "👥 Sales by Customer Category"
+            )
+
+            df = df.sort_values(
+                "TotalRevenue",
+                ascending=True
+            )
+
+            fig = px.bar(
+                df,
+                x="TotalRevenue",
+                y="CustomerCategoryName",
+                orientation="h",
+                title="Revenue by Customer Category",
+                labels={
+                    "TotalRevenue": "Revenue ($)",
+                    "CustomerCategoryName": "Customer Category"
+                },
+                hover_data=[
+                    "UnitsSold",
+                    "InvoiceCount",
+                    "CustomerCount"
+                ]
+            )
+
+            st.plotly_chart(
+                fig,
+                use_container_width=True
+            )
+
+            st.dataframe(
+                df.sort_values(
+                    "TotalRevenue",
+                    ascending=False
+                ),
+                use_container_width=True,
+                hide_index=True
+            )
+
 
 # ============================================================
 # 7. CHAT INPUT AND AGENT EXECUTION

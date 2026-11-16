@@ -14,7 +14,9 @@ from app.sql_tools import (
     get_sales_summary,
     get_top_selling_products,
     get_monthly_sales_summary,
-    get_sales_by_stock_group
+    get_sales_by_stock_group,
+    get_top_customers,
+    get_sales_by_customer_category
 )
 
 
@@ -69,6 +71,22 @@ TOOLS = [
             "description": "Get sales revenue, units sold and invoice count by stock group, optionally filtered by invoice date.",
             "parameters": DATE_PARAMETERS
         }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_top_customers",
+            "description": "Get the top 10 customers by revenue, optionally filtered by invoice date.",
+            "parameters": DATE_PARAMETERS
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_sales_by_customer_category",
+            "description": "Get sales revenue, units sold and invoice count by customer category, optionally filtered by invoice date.",
+            "parameters": DATE_PARAMETERS
+        }
     }
 ]
 
@@ -76,7 +94,9 @@ AVAILABLE_FUNCTIONS = {
     "get_sales_summary": get_sales_summary,
     "get_top_selling_products": get_top_selling_products,
     "get_monthly_sales_summary": get_monthly_sales_summary,
-    "get_sales_by_stock_group": get_sales_by_stock_group
+    "get_sales_by_stock_group": get_sales_by_stock_group,
+    "get_top_customers": get_top_customers,
+    "get_sales_by_customer_category": get_sales_by_customer_category
 }
 
 

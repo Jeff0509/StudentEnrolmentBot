@@ -170,6 +170,68 @@ def get_sales_by_stock_group(start_date=None, end_date=None):
 
     return execute_readonly_query(sql, params)
 
+def get_top_customers(start_date=None, end_date=None):
+
+    date_filter, params = build_date_filter(
+        start_date,
+        end_date
+    )
+
+    sql = f"""
+        SELECT TOP (10)
+            c.CustomerID,
+            c.CustomerName,
+            SUM(il.ExtendedPrice) AS TotalRevenue,
+            SUM(il.Quantity) AS UnitsSold,
+            COUNT(DISTINCT i.InvoiceID) AS InvoiceCount
+        FROM Sales.Invoices AS i
+        INNER JOIN Sales.InvoiceLines AS il
+            ON i.InvoiceID = il.InvoiceID
+        INNER JOIN Sales.Customers AS c
+            ON i.CustomerID = c.CustomerID
+        WHERE i.IsCreditNote = 0
+        {date_filter}
+        GROUP BY
+            c.CustomerID,
+            c.CustomerName
+        ORDER BY TotalRevenue DESC;
+    """
+
+    return execute_readonly_query(sql, params)
+
+
+def get_sales_by_customer_category(
+    start_date=None,
+    end_date=None
+):
+
+    date_filter, params = build_date_filter(
+        start_date,
+        end_date
+    )
+
+    sql = f"""
+        SELECT
+            cc.CustomerCategoryName,
+            SUM(il.ExtendedPrice) AS TotalRevenue,
+            SUM(il.Quantity) AS UnitsSold,
+            COUNT(DISTINCT i.InvoiceID) AS InvoiceCount,
+            COUNT(DISTINCT c.CustomerID) AS CustomerCount
+        FROM Sales.Invoices AS i
+        INNER JOIN Sales.InvoiceLines AS il
+            ON i.InvoiceID = il.InvoiceID
+        INNER JOIN Sales.Customers AS c
+            ON i.CustomerID = c.CustomerID
+        INNER JOIN Sales.CustomerCategories AS cc
+            ON c.CustomerCategoryID = cc.CustomerCategoryID
+        WHERE i.IsCreditNote = 0
+        {date_filter}
+        GROUP BY cc.CustomerCategoryName
+        ORDER BY TotalRevenue DESC;
+    """
+
+    return execute_readonly_query(sql, params)
+
 if __name__ == "__main__":
 
     print("\nANNUAL SALES SUMMARY")
@@ -191,4 +253,12 @@ if __name__ == "__main__":
 
     print("\nSALES BY STOCK GROUP")
     for row in get_sales_by_stock_group():
+        print(row)
+
+    print("\nTOP 10 CUSTOMERS")
+    for row in get_top_customers():
+        print(row)
+
+    print("\nSALES BY CUSTOMER CATEGORY")
+    for row in get_sales_by_customer_category():
         print(row)
