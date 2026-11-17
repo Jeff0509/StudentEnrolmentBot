@@ -193,6 +193,134 @@ def display_tool_results(tool_results):
 
         data = tool_result["data"]
 
+        if tool_name == "get_sales_comparison":
+
+            current = data["current_period"]
+            comparison = data["comparison_period"]
+            changes = data["changes"]
+
+            current_label = (
+                f'{current["start_date"]} to {current["end_date"]}'
+            )
+
+            comparison_label = (
+                f'{comparison["start_date"]} to {comparison["end_date"]}'
+            )
+
+            st.subheader("Sales Period Comparison")
+
+            # Revenue KPI
+            revenue_change = changes["revenue"]
+            revenue_delta = (
+                f'{revenue_change["percentage_change"]:+.2f}%'
+                if revenue_change["percentage_change"] is not None
+                else f'${revenue_change["difference"]:,.2f}'
+            )
+
+            # Units KPI
+            units_change = changes["units"]
+            units_delta = (
+                f'{units_change["percentage_change"]:+.2f}%'
+                if units_change["percentage_change"] is not None
+                else f'{units_change["difference"]:+,}'
+            )
+
+            # Invoice KPI
+            invoices_change = changes["invoices"]
+            invoices_delta = (
+                f'{invoices_change["percentage_change"]:+.2f}%'
+                if invoices_change["percentage_change"] is not None
+                else f'{invoices_change["difference"]:+,}'
+            )
+
+            col1, col2, col3 = st.columns(3)
+
+            with col1:
+                st.metric(
+                    "Current Revenue",
+                    f'${current["revenue"]:,.2f}',
+                    delta=revenue_delta
+                )
+
+            with col2:
+                st.metric(
+                    "Units Sold",
+                    f'{current["units"]:,}',
+                    delta=units_delta
+                )
+
+            with col3:
+                st.metric(
+                    "Invoice Count",
+                    f'{current["invoices"]:,}',
+                    delta=invoices_delta
+                )
+
+            # Revenue comparison chart
+            comparison_df = pd.DataFrame([
+                {
+                    "Period": comparison_label,
+                    "Revenue": comparison["revenue"]
+                },
+                {
+                    "Period": current_label,
+                    "Revenue": current["revenue"]
+                }
+            ])
+
+            fig = px.bar(
+                comparison_df,
+                x="Period",
+                y="Revenue",
+                color="Period",
+                text_auto=".2s",
+                title="Revenue Comparison"
+            )
+
+            fig.update_layout(
+                yaxis_title="Revenue ($)",
+                xaxis_title="Period",
+                showlegend=False
+            )
+
+            fig.update_yaxes(tickprefix="$", tickformat=",.0f")
+
+            st.plotly_chart(fig, use_container_width=True)
+
+            # Detailed comparison table
+            comparison_table = pd.DataFrame([
+                {
+                    "Metric": "Revenue",
+                    "Current Period": current["revenue"],
+                    "Comparison Period": comparison["revenue"],
+                    "Difference": revenue_change["difference"],
+                    "Change (%)": revenue_change["percentage_change"]
+                },
+                {
+                    "Metric": "Units Sold",
+                    "Current Period": current["units"],
+                    "Comparison Period": comparison["units"],
+                    "Difference": units_change["difference"],
+                    "Change (%)": units_change["percentage_change"]
+                },
+                {
+                    "Metric": "Invoice Count",
+                    "Current Period": current["invoices"],
+                    "Comparison Period": comparison["invoices"],
+                    "Difference": invoices_change["difference"],
+                    "Change (%)": invoices_change["percentage_change"]
+                }
+            ])
+
+            st.dataframe(
+                comparison_table,
+                use_container_width=True,
+                hide_index=True
+            )
+
+            continue
+
+
         if not data:
             continue
 

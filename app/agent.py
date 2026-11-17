@@ -16,7 +16,8 @@ from app.sql_tools import (
     get_monthly_sales_summary,
     get_sales_by_stock_group,
     get_top_customers,
-    get_sales_by_customer_category
+    get_sales_by_customer_category,
+    get_sales_comparison
 )
 
 
@@ -37,6 +38,35 @@ DATE_PARAMETERS = {
         }
     },
     "required": []
+}
+
+COMPARISON_DATE_PARAMETERS = {
+    "type": "object",
+    "properties": {
+        "current_start_date": {
+            "type": "string",
+            "description": "Start date of the current period, YYYY-MM-DD."
+        },
+        "current_end_date": {
+            "type": "string",
+            "description": "Inclusive end date of the current period, YYYY-MM-DD."
+        },
+        "comparison_start_date": {
+            "type": "string",
+            "description": "Start date of the comparison period, YYYY-MM-DD."
+        },
+        "comparison_end_date": {
+            "type": "string",
+            "description": "Inclusive end date of the comparison period, YYYY-MM-DD."
+        }
+    },
+    "required": [
+        "current_start_date",
+        "current_end_date",
+        "comparison_start_date",
+        "comparison_end_date"
+    ],
+    "additionalProperties": False
 }
 
 TOOLS = [
@@ -87,7 +117,21 @@ TOOLS = [
             "description": "Get sales revenue, units sold and invoice count by customer category, optionally filtered by invoice date.",
             "parameters": DATE_PARAMETERS
         }
+    },
+    {
+    "type": "function",
+    "function": {
+        "name": "get_sales_comparison",
+        "description": (
+            "Compare sales between two date periods. "
+            "Returns revenue, units sold, invoice count, "
+            "absolute differences and percentage changes. "
+            "Use this tool when the user asks to compare "
+            "sales between years, months or other date ranges."
+        ),
+        "parameters": COMPARISON_DATE_PARAMETERS
     }
+},
 ]
 
 AVAILABLE_FUNCTIONS = {
@@ -96,7 +140,8 @@ AVAILABLE_FUNCTIONS = {
     "get_monthly_sales_summary": get_monthly_sales_summary,
     "get_sales_by_stock_group": get_sales_by_stock_group,
     "get_top_customers": get_top_customers,
-    "get_sales_by_customer_category": get_sales_by_customer_category
+    "get_sales_by_customer_category": get_sales_by_customer_category,
+    "get_sales_comparison": get_sales_comparison
 }
 
 
@@ -139,12 +184,15 @@ Content:
 # 3. Execute approved SQL tools
 # -------------------------------------------------
 
+from datetime import date
+
 def execute_tool(tool_name, arguments):
+    """
+    Execute an approved SQL tool with validated date parameters.
+    """
 
     if tool_name not in AVAILABLE_FUNCTIONS:
-        raise ValueError(
-            f"Tool not allowed: {tool_name}"
-        )
+        raise ValueError(f"Unknown tool: {tool_name}")
 
     if isinstance(arguments, str):
         arguments = json.loads(arguments)
@@ -152,42 +200,85 @@ def execute_tool(tool_name, arguments):
     if not isinstance(arguments, dict):
         raise ValueError("Tool arguments must be a JSON object.")
 
-    allowed_arguments = {"start_date", "end_date"}
+    if tool_name == "get_sales_comparison":
+        allowed_arguments = {
+            "current_start_date",
+            "current_end_date",
+            "comparison_start_date",
+            "comparison_end_date"
+        }
 
-    if not set(arguments).issubset(allowed_arguments):
-        raise ValueError("Unsupported tool arguments.")
+        required_arguments = allowed_arguments
 
-    start_date = arguments.get("start_date")
-    end_date = arguments.get("end_date")
+    else:
+        allowed_arguments = {"start_date", "end_date"}
+        required_arguments = set()
 
-    from datetime import date
+    unexpected = set(arguments) - allowed_arguments
 
-    for field_name, value in (
-        ("start_date", start_date),
-        ("end_date", end_date)
-    ):
-        if value is not None:
+    if unexpected:
+        raise ValueError(
+            f"Unexpected arguments: {unexpected}"
+        )
+
+    missing = required_arguments - set(arguments)
+
+    if missing:
+        raise ValueError(
+            f"Missing required arguments: {missing}"
+        )
+
+    # Validate all supplied dates.
+    for key, value in arguments.items():
+
+        if not isinstance(value, str):
+            raise ValueError(
+                f"{key} must be a date string in YYYY-MM-DD format."
+            )
+
+        try:
             parsed_date = date.fromisoformat(value)
 
             if parsed_date.isoformat() != value:
-                raise ValueError(
-                    f"{field_name} must use YYYY-MM-DD format."
-                )
+                raise ValueError()
 
-    if start_date and end_date and start_date > end_date:
-        raise ValueError(
-            "Start date cannot be later than end date."
-        )
+        except ValueError:
+            raise ValueError(
+                f"Invalid date for {key}: {value}. "
+                "Expected YYYY-MM-DD."
+            )
 
-    return AVAILABLE_FUNCTIONS[tool_name](
-        start_date=start_date,
-        end_date=end_date
-    )
+    # Validate the date range.
+    if tool_name == "get_sales_comparison":
+
+        if arguments["current_start_date"] > arguments["current_end_date"]:
+            raise ValueError(
+                "Current period start date must not be after end date."
+            )
+
+        if arguments["comparison_start_date"] > arguments["comparison_end_date"]:
+            raise ValueError(
+                "Comparison period start date must not be after end date."
+            )
+
+    else:
+
+        start_date = arguments.get("start_date")
+        end_date = arguments.get("end_date")
+
+        if start_date and end_date and start_date > end_date:
+            raise ValueError(
+                "Start date must not be after end date."
+            )
+
+    function = AVAILABLE_FUNCTIONS[tool_name]
+
+    return function(**arguments)
+
 
 # -------------------------------------------------
 # 4. Combined RAG + SQL + Memory Agent
 # -------------------------------------------------
-
 
 def ask_agent(
     question,
@@ -233,6 +324,78 @@ If the user explicitly requests a different date range,
 use the dates specified in the user's question instead.
 
 If neither is provided, retrieve the full available history.
+
+SALES COMPARISON INSTRUCTIONS:
+
+When the user asks to compare sales between two periods,
+use the get_sales_comparison tool.
+
+For example:
+- Compare sales in 2025 against 2024.
+- Compare this quarter with the previous quarter.
+- Compare January 2025 with January 2024.
+
+You must provide all four date parameters:
+current_start_date,
+current_end_date,
+comparison_start_date,
+comparison_end_date.
+
+Use inclusive end dates.
+
+Do not calculate sales differences or percentage changes yourself.
+Use the results returned by the SQL tool.
+
+Clearly explain:
+- Revenue difference and percentage change.
+- Units sold difference and percentage change.
+- Invoice count difference and percentage change.
+
+Never invent figures.
+
+SALES CHANGE INVESTIGATION:
+
+When the user asks why sales increased or decreased,
+investigate the underlying sales data using approved SQL tools.
+
+If a previous sales comparison exists in the conversation,
+reuse its exact current and comparison date ranges.
+
+Otherwise, determine the two periods from the user's question.
+If the periods are unclear, ask the user to clarify.
+
+For a sales change investigation:
+
+1. Call get_sales_comparison to establish the overall change,
+   if the comparison results are not already available.
+
+2. Call get_top_customers for the current period.
+
+3. Call get_top_customers for the comparison period.
+
+4. Call get_sales_by_stock_group for the current period.
+
+5. Call get_sales_by_stock_group for the comparison period.
+
+Use the same date ranges consistently across all five analyses.
+
+Compare customer and stock group revenue between the two periods.
+
+Identify:
+- Customers with the largest revenue increases.
+- Customers with the largest revenue decreases.
+- Stock groups with the largest revenue increases.
+- Stock groups with the largest revenue decreases.
+
+Explain which customers and stock groups contributed most
+to the overall sales change.
+
+Important:
+- Use actual SQL results, not assumptions.
+- Do not claim causation without supporting evidence.
+- Do not assume that the top 10 customers represent all sales.
+- Explain when the available data is insufficient.
+- Clearly distinguish observations from possible explanations.
 """
 
     messages = [

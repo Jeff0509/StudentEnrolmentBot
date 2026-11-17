@@ -232,6 +232,141 @@ def get_sales_by_customer_category(
 
     return execute_readonly_query(sql, params)
 
+
+def get_sales_comparison(
+    current_start_date,
+    current_end_date,
+    comparison_start_date,
+    comparison_end_date
+):
+    """
+    Compare sales between two date periods.
+
+    All end dates are inclusive.
+    """
+
+    sql = """
+        WITH Periods AS (
+            SELECT
+                'Current' AS PeriodName,
+                CAST(? AS date) AS StartDate,
+                CAST(? AS date) AS EndDate
+
+            UNION ALL
+
+            SELECT
+                'Comparison' AS PeriodName,
+                CAST(? AS date) AS StartDate,
+                CAST(? AS date) AS EndDate
+        ),
+
+        PeriodSales AS (
+            SELECT
+                p.PeriodName,
+
+                COALESCE(SUM(il.ExtendedPrice), 0) AS TotalRevenue,
+
+                COALESCE(SUM(il.Quantity), 0) AS TotalUnits,
+
+                COUNT(DISTINCT i.InvoiceID) AS InvoiceCount
+
+            FROM Periods p
+
+            LEFT JOIN Sales.Invoices i
+                ON i.InvoiceDate >= p.StartDate
+                AND i.InvoiceDate < DATEADD(day, 1, p.EndDate)
+                AND i.IsCreditNote = 0
+
+            LEFT JOIN Sales.InvoiceLines il
+                ON i.InvoiceID = il.InvoiceID
+
+            GROUP BY
+                p.PeriodName
+        )
+
+        SELECT
+            PeriodName,
+            TotalRevenue,
+            TotalUnits,
+            InvoiceCount
+
+        FROM PeriodSales
+
+        ORDER BY
+            CASE
+                WHEN PeriodName = 'Current' THEN 1
+                ELSE 2
+            END;
+    """
+
+    params = [
+        current_start_date,
+        current_end_date,
+        comparison_start_date,
+        comparison_end_date
+    ]
+
+    results = execute_readonly_query(sql, params)
+
+    current = results[0]
+    previous = results[1]
+
+    current_revenue = float(current["TotalRevenue"])
+    previous_revenue = float(previous["TotalRevenue"])
+
+    current_units = int(current["TotalUnits"])
+    previous_units = int(previous["TotalUnits"])
+
+    current_invoices = int(current["InvoiceCount"])
+    previous_invoices = int(previous["InvoiceCount"])
+
+    def calculate_change(current_value, previous_value):
+        difference = current_value - previous_value
+
+        percentage = (
+            round((difference / previous_value) * 100, 2)
+            if previous_value != 0
+            else None
+        )
+
+        return {
+            "difference": difference,
+            "percentage_change": percentage
+        }
+
+    return {
+        "current_period": {
+            "start_date": current_start_date,
+            "end_date": current_end_date,
+            "revenue": round(current_revenue, 2),
+            "units": current_units,
+            "invoices": current_invoices
+        },
+
+        "comparison_period": {
+            "start_date": comparison_start_date,
+            "end_date": comparison_end_date,
+            "revenue": round(previous_revenue, 2),
+            "units": previous_units,
+            "invoices": previous_invoices
+        },
+
+        "changes": {
+            "revenue": calculate_change(
+                current_revenue, previous_revenue
+            ),
+
+            "units": calculate_change(
+                current_units, previous_units
+            ),
+
+            "invoices": calculate_change(
+                current_invoices, previous_invoices
+            )
+        }
+    }
+
+
 if __name__ == "__main__":
 
     print("\nANNUAL SALES SUMMARY")
